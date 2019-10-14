@@ -1,0 +1,10 @@
+{
+  "name": "wormhole-dwf2019",
+  "version": "0.1.0",
+  "description": "Wormhole: An Exquisite Digital Corpse",
+  "main": "dist/index.js",
+  "repository": "git@github.com:Rupertofly/wormhole-dwf2019.git",
+  "author": "Ruby Quail",
+  "license": "none",
+  "private": false
+}
