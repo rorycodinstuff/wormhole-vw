@@ -21,6 +21,7 @@
     "parcel": "^1.12.4",
     "parcel-plugin-markdown": "^0.4.2",
     "react-render-html": "^0.6.0",
+    "sass": "^1.23.0",
     "typescript": "^3.6.4"
   }
 }

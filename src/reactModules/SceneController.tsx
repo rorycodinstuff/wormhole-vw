@@ -1,4 +1,5 @@
 import * as React from 'react';
+import LoadingScreen from './LoadingScreen';
 enum SCENES {
   load,
   main,
@@ -12,9 +13,10 @@ export class SceneController extends React.Component {
   render() {
     switch (this.scene) {
       case SCENES.load:
-        return <p>hey mates</p>;
+        return <LoadingScreen />;
       default:
         break;
     }
   }
 }
+export default SceneController;

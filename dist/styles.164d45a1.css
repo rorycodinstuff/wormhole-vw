@@ -1,21 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=VT323&display=swap&subset=latin-ext');
-
+@import url("https://fonts.googleapis.com/css?family=VT323&display=swap&subset=latin-ext");
 body {
   background-color: #fafafa;
   color: #0f0f0f;
   font-family: VT323, monospace;
   margin: 0px;
 }
+
 .loading-screen {
   display: grid;
   height: 500px;
-  grid-template:
-    '. . .' 1fr
-    '. cn .' 2fr
-    '. . .' 1fr
-    / 1fr 2fr 1fr;
+  grid-template: ". . ." 1fr ". cn ." 2fr ". . ." 1fr/1fr 2fr 1fr;
   text-align: left;
 }
+
 button {
   text-decoration: underline;
   background-color: #fafafa;
@@ -29,5 +26,4 @@ button:hover {
   color: #fafafa;
 }
 
-
-/*# sourceMappingURL=/styles.8986bff4.css.map */
+/*# sourceMappingURL=/styles.164d45a1.css.map */
