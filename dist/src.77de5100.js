@@ -31985,7 +31985,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"reactModules/LoadingScreen.tsx":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"reactModules/ReadyButton.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31994,6 +31994,150 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var ReadyButton =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ReadyButton, _Component);
+
+  function ReadyButton() {
+    var _this;
+
+    _classCallCheck(this, ReadyButton);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ReadyButton).apply(this, arguments));
+    _this.state = {
+      loading: true
+    };
+    return _this;
+  }
+
+  _createClass(ReadyButton, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("button", {
+        onClick: this.props.onPress
+      }, "Ready! Click here to begin");
+    }
+  }]);
+
+  return ReadyButton;
+}(_react.Component);
+
+exports.default = ReadyButton;
+},{"react":"../node_modules/react/index.js"}],"reactModules/LoadingText.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var LoadingText =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(LoadingText, _Component);
+
+  function LoadingText() {
+    var _this;
+
+    _classCallCheck(this, LoadingText);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LoadingText).apply(this, arguments));
+    _this.state = {
+      animProg: 0
+    };
+    _this.intRef = -1;
+
+    _this.updateAnim = function () {
+      _this.setState({
+        animProg: (_this.state.animProg + 1) % 4
+      });
+    };
+
+    _this.componentDidMount = function () {
+      _this.intRef = window.setInterval(_this.updateAnim, 500);
+    };
+
+    _this.componentWillUnmount = function () {
+      window.clearInterval(_this.intRef);
+    };
+
+    return _this;
+  }
+
+  _createClass(LoadingText, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", null, "Loading", '.'.repeat(this.state.animProg));
+    }
+  }]);
+
+  return LoadingText;
+}(_react.Component);
+
+exports.default = LoadingText;
+},{"react":"../node_modules/react/index.js"}],"reactModules/LoadingScreen.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ReadyButton = _interopRequireDefault(require("./ReadyButton"));
+
+var _LoadingText = _interopRequireDefault(require("./LoadingText"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -32032,23 +32176,31 @@ function (_Component) {
       hasLoaded: false,
       text: Math.floor(Date.now() / 1).toString(16)
     };
+    _this.animReq = 0;
+
+    _this.updateTime = function () {
+      _this.setState({
+        text: Math.floor(Date.now() / 50).toString(16)
+      });
+
+      _this.animReq = requestAnimationFrame(_this.updateTime);
+    };
+
     return _this;
   }
 
   _createClass(LoadingScreen, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
-      var updateTime = function updateTime() {
-        _this2.setState({
-          text: Math.floor(Date.now() / 50).toString(16)
-        });
-
-        requestAnimationFrame(updateTime);
-      };
-
-      requestAnimationFrame(updateTime);
+      this.animReq = requestAnimationFrame(this.updateTime);
+      this.setState({
+        hasLoaded: true
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      cancelAnimationFrame(this.animReq);
     }
   }, {
     key: "render",
@@ -32063,7 +32215,9 @@ function (_Component) {
         style: {
           textAlign: 'center'
         }
-      }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist will independently respond to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, this.state.text), _react.default.createElement("button", null, " loading")));
+      }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist will independently respond to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, "This piece has an audio component and uses webGL which requires a recent computer, it is also optemised for a 16:10 aspect ratio screen"), _react.default.createElement("p", null, this.state.text), this.state.hasLoaded ? _react.default.createElement(_ReadyButton.default, {
+        onPress: this.props.passThroughFunc
+      }) : _react.default.createElement(_LoadingText.default, null)));
     }
   }]);
 
@@ -32071,17 +32225,98 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = LoadingScreen;
-},{"react":"../node_modules/react/index.js"}],"reactModules/SceneController.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./ReadyButton":"reactModules/ReadyButton.tsx","./LoadingText":"reactModules/LoadingText.tsx"}],"reactModules/keyButton.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.SceneController = void 0;
+exports.default = void 0;
 
-var React = _interopRequireWildcard(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-var _LoadingScreen = _interopRequireDefault(require("./LoadingScreen"));
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var keyButton =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(keyButton, _Component);
+
+  function keyButton() {
+    var _this;
+
+    _classCallCheck(this, keyButton);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(keyButton).apply(this, arguments));
+    _this.state = {};
+
+    _this.onKeyPress = function (e) {
+      var _this$props = _this.props,
+          key = _this$props.key,
+          func = _this$props.func;
+      if (e.key === key) func();
+    };
+
+    _this.componentDidMount = function () {
+      window.addEventListener('keypress', _this.onKeyPress);
+    };
+
+    _this.componentWillUnmount = function () {
+      window.removeEventListener('keypress', _this.onKeyPress);
+    };
+
+    return _this;
+  }
+
+  _createClass(keyButton, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react.default.createElement("button", {
+        type: 'button',
+        onClick: function onClick() {
+          return _this2.props.func();
+        }
+      }, this.props.children);
+    }
+  }]);
+
+  return keyButton;
+}(_react.Component);
+
+exports.default = keyButton;
+},{"react":"../node_modules/react/index.js"}],"reactModules/Controls.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _keyButton = _interopRequireDefault(require("./keyButton"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32107,48 +32342,318 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var SCENES;
+var Controls =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Controls, _Component);
 
-(function (SCENES) {
-  SCENES[SCENES["load"] = 0] = "load";
-  SCENES[SCENES["main"] = 1] = "main";
-})(SCENES || (SCENES = {}));
+  function Controls() {
+    var _this;
+
+    _classCallCheck(this, Controls);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Controls).apply(this, arguments));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Controls, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react.default.createElement("div", {
+        className: 'sidebar'
+      }, _react.default.createElement("div", null, _react.default.createElement("h3", null, "Wormhole Interaction Interface"), _react.default.createElement("p", null, "The interface is controlled through the keyboard or the following buttons")), _react.default.createElement("div", {
+        className: 'button-con'
+      }, _react.default.createElement("div", null), _react.default.createElement("div", null, "--"), _react.default.createElement("div", null, "-"), _react.default.createElement("div", null, "+"), _react.default.createElement("div", null, "++"), _react.default.createElement("div", null, "azimoth"), _react.default.createElement(_keyButton.default, {
+        key: 'q',
+        func: function func() {
+          return _this2;
+        }
+      }, "Q"), _react.default.createElement(_keyButton.default, {
+        key: 'w',
+        func: function func() {
+          return _this2;
+        }
+      }, "W"), _react.default.createElement(_keyButton.default, {
+        key: 'e',
+        func: function func() {
+          return _this2;
+        }
+      }, "E"), _react.default.createElement(_keyButton.default, {
+        key: 'r',
+        func: function func() {
+          return _this2;
+        }
+      }, "R"), _react.default.createElement("div", null, "altitude"), _react.default.createElement(_keyButton.default, {
+        key: 'a',
+        func: function func() {
+          return _this2;
+        }
+      }, "A"), _react.default.createElement(_keyButton.default, {
+        key: 's',
+        func: function func() {
+          return _this2;
+        }
+      }, "S"), _react.default.createElement(_keyButton.default, {
+        key: 'd',
+        func: function func() {
+          return _this2;
+        }
+      }, "D"), _react.default.createElement(_keyButton.default, {
+        key: 'f',
+        func: function func() {
+          return _this2;
+        }
+      }, "F"), _react.default.createElement("div", null, "tone"), _react.default.createElement(_keyButton.default, {
+        key: 'z',
+        func: function func() {
+          return _this2;
+        }
+      }, "Z"), _react.default.createElement(_keyButton.default, {
+        key: 'x',
+        func: function func() {
+          return _this2;
+        }
+      }, "X"), _react.default.createElement(_keyButton.default, {
+        key: 'c',
+        func: function func() {
+          return _this2;
+        }
+      }, "C"), _react.default.createElement(_keyButton.default, {
+        key: 'v',
+        func: function func() {
+          return _this2;
+        }
+      }, "V")), _react.default.createElement("div", {
+        className: 'output-text'
+      }, _react.default.createElement("h4", null, "Output")));
+    }
+  }]);
+
+  return Controls;
+}(_react.Component);
+
+exports.default = Controls;
+},{"react":"../node_modules/react/index.js","./keyButton":"reactModules/keyButton.tsx"}],"reactModules/Viewport.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Viewport =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Viewport, _Component);
+
+  function Viewport() {
+    var _this;
+
+    _classCallCheck(this, Viewport);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Viewport).apply(this, arguments));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(Viewport, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", {
+        className: 'viewport',
+        style: {
+          height: window.innerHeight
+        }
+      }, "a");
+    }
+  }]);
+
+  return Viewport;
+}(_react.Component);
+
+exports.default = Viewport;
+},{"react":"../node_modules/react/index.js"}],"reactModules/MainScreen.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Controls = _interopRequireDefault(require("./Controls"));
+
+var _Viewport = _interopRequireDefault(require("./Viewport"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var MainScreen =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(MainScreen, _Component);
+
+  function MainScreen() {
+    var _this;
+
+    _classCallCheck(this, MainScreen);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MainScreen).apply(this, arguments));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(MainScreen, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", {
+        className: 'main-screen',
+        style: {
+          height: window.innerHeight
+        }
+      }, _react.default.createElement(_Controls.default, null), _react.default.createElement(_Viewport.default, null));
+    }
+  }]);
+
+  return MainScreen;
+}(_react.Component);
+
+exports.default = MainScreen;
+},{"react":"../node_modules/react/index.js","./Controls":"reactModules/Controls.tsx","./Viewport":"reactModules/Viewport.tsx"}],"reactModules/SceneController.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _LoadingScreen = _interopRequireDefault(require("./LoadingScreen"));
+
+var _MainScreen = _interopRequireDefault(require("./MainScreen"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var SCENE;
+
+(function (SCENE) {
+  SCENE[SCENE["load"] = 0] = "load";
+  SCENE[SCENE["play"] = 1] = "play";
+})(SCENE || (SCENE = {}));
 
 var SceneController =
 /*#__PURE__*/
-function (_React$Component) {
-  _inherits(SceneController, _React$Component);
+function (_Component) {
+  _inherits(SceneController, _Component);
 
-  function SceneController(props) {
+  function SceneController() {
     var _this;
 
     _classCallCheck(this, SceneController);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SceneController).call(this, props));
-    _this.scene = SCENES.load;
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SceneController).apply(this, arguments));
+    _this.state = {
+      scene: SCENE.load
+    };
+
+    _this.swapScenes = function () {
+      return _this.setState(function (_ref) {
+        var scene = _ref.scene;
+        return {
+          scene: (scene + 1) % 2
+        };
+      });
+    };
+
     return _this;
   }
 
   _createClass(SceneController, [{
     key: "render",
     value: function render() {
-      switch (this.scene) {
-        case SCENES.load:
-          return React.createElement(_LoadingScreen.default, null);
-
-        default:
-          break;
-      }
+      return this.state.scene === SCENE.load ? _react.default.createElement(_LoadingScreen.default, {
+        passThroughFunc: this.swapScenes
+      }) : _react.default.createElement(_MainScreen.default, null);
     }
   }]);
 
   return SceneController;
-}(React.Component);
+}(_react.Component);
 
-exports.SceneController = SceneController;
-var _default = SceneController;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./LoadingScreen":"reactModules/LoadingScreen.tsx"}],"app.tsx":[function(require,module,exports) {
+exports.default = SceneController;
+},{"react":"../node_modules/react/index.js","./LoadingScreen":"reactModules/LoadingScreen.tsx","./MainScreen":"reactModules/MainScreen.tsx"}],"app.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

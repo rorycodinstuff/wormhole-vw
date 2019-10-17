@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-
-interface Props {}
+import ReadyButton from './ReadyButton';
+import LoadingText from './LoadingText';
+interface Props {
+  passThroughFunc: VoidFunction;
+}
 interface State {
   hasLoaded: boolean;
   text: string;
@@ -8,13 +11,18 @@ interface State {
 
 export default class LoadingScreen extends Component<Props, State> {
   state = { hasLoaded: false, text: Math.floor(Date.now() / 1).toString(16) };
+  animReq: number = 0;
+  updateTime = () => {
+    this.setState({ text: Math.floor(Date.now() / 50).toString(16) });
+    this.animReq = requestAnimationFrame(this.updateTime);
+  };
 
   componentDidMount() {
-    const updateTime = () => {
-      this.setState({ text: Math.floor(Date.now() / 50).toString(16) });
-      requestAnimationFrame(updateTime);
-    };
-    requestAnimationFrame(updateTime);
+    this.animReq = requestAnimationFrame(this.updateTime);
+    this.setState({ hasLoaded: true });
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.animReq);
   }
   render() {
     return (
@@ -36,8 +44,17 @@ export default class LoadingScreen extends Component<Props, State> {
             Hinepunui Solly and Ruby Quail. Presented in partnership with
             Voiceworks and Starling
           </p>
+          <p>
+            This piece has an audio component and uses webGL which requires a
+            recent computer, it is also optemised for a 16:10 aspect ratio
+            screen
+          </p>
           <p>{this.state.text}</p>
-          <button> loading</button>
+          {this.state.hasLoaded ? (
+            <ReadyButton onPress={this.props.passThroughFunc} />
+          ) : (
+            <LoadingText />
+          )}
         </div>
       </div>
     );

@@ -1,22 +1,25 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import LoadingScreen from './LoadingScreen';
-enum SCENES {
+import MainScreen from './MainScreen';
+enum SCENE {
   load,
-  main,
+  play,
 }
-export class SceneController extends React.Component {
-  scene;
-  constructor(props) {
-    super(props);
-    this.scene = SCENES.load;
-  }
+interface Props {}
+interface State {
+  scene: SCENE;
+}
+
+export default class SceneController extends Component<Props, State> {
+  state = {
+    scene: SCENE.load,
+  };
+  swapScenes = () => this.setState(({ scene }) => ({ scene: (scene + 1) % 2 }));
   render() {
-    switch (this.scene) {
-      case SCENES.load:
-        return <LoadingScreen />;
-      default:
-        break;
-    }
+    return this.state.scene === SCENE.load ? (
+      <LoadingScreen passThroughFunc={this.swapScenes} />
+    ) : (
+      <MainScreen />
+    );
   }
 }
-export default SceneController;
