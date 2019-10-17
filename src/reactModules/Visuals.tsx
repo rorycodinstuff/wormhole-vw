@@ -17,10 +17,20 @@ export default class Visuals extends Component<Props, State> {
   context!: Controller;
   container?: HTMLDivElement;
   videoRef = React.createRef<HTMLVideoElement>();
+  glRef = React.createRef<HTMLCanvasElement>();
+  canvRef = React.createRef<HTMLCanvasElement>();
+  hasAttCanv = false;
   componentDidMount() {
     const { width } = this.container!.getBoundingClientRect();
     const newHeight = 0.75 * width;
     this.setState({ dimms: { width, height: newHeight } });
+  }
+  componentDidUpdate() {
+    if (this.state.dimms && !this.hasAttCanv) {
+      this.context.attachGLcanvas(this.glRef.current!);
+      this.context.attachTextCanvas(this.canvRef.current!);
+      this.hasAttCanv = !this.hasAttCanv;
+    }
   }
   renderContent() {
     const wid = Math.floor(this.state.dimms!.width);
@@ -41,8 +51,15 @@ export default class Visuals extends Component<Props, State> {
           id='gl'
           width={wid}
           height={hei}
+          ref={this.glRef}
         ></canvas>
-        <canvas hidden id='text' width={wid} height={hei}></canvas>
+        <canvas
+          id='text'
+          style={{ position: 'relative', left: '0px', top: `-${2 * hei}px` }}
+          width={wid}
+          height={hei}
+          ref={this.canvRef}
+        ></canvas>
       </>
     );
   }

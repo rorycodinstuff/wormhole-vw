@@ -185,7 +185,7 @@ export class Jfaclass {
       inputPts: inputFB,
       resolution: [this.wid, this.hei],
     });
-    this.idFunc({ id: this.out });
+    this.idFunc({ id: inputFB });
     console.log(
       this.gl.read({ framebuffer: inputFB as regl.Framebuffer2D })[299]
     );

@@ -1,5 +1,6 @@
 import { Jfaclass } from '../jfaFiles/jfa';
-import { Regl } from 'regl';
+import REGL, { Regl } from 'regl';
+import lines from '../linesForRender';
 
 export default class {
   videoURL?: string;
@@ -12,6 +13,7 @@ export default class {
   jfa?: Jfaclass;
   // audioSource;
   glContext?: Regl;
+  textCanvas?: CanvasRenderingContext2D;
   loadingHandlers: Set<Function> = new Set();
   async fetchFiles() {
     const audioResp = await window.fetch(
@@ -32,4 +34,24 @@ export default class {
   removeReadyFunction = (func: Function) => {
     this.loadingHandlers.delete(func);
   };
+  attachGLcanvas(canvas: HTMLCanvasElement) {
+    const { width, height } = canvas.getBoundingClientRect();
+    this.glContext = REGL({ canvas });
+    this.jfa = new Jfaclass(this.glContext, width, height, canvas);
+    this.glContext.clear({
+      color: [0, 0, 0, 0],
+    });
+  }
+  attachTextCanvas(canvas: HTMLCanvasElement) {
+    this.textCanvas = canvas.getContext('2d')!;
+    this.textCanvas.font = '32px VT323';
+    this.textCanvas.strokeStyle = 'white';
+    for (let i = 0; i < lines.length; i++) {
+      let y = 10 + i * 32;
+      this.textCanvas.strokeText(lines[i], 5, y);
+    }
+    this.jfa!.inputTexture = this.textCanvas;
+    const ot = this.jfa!.runJFA();
+    this.jfa!.getFilled(ot);
+  }
 }

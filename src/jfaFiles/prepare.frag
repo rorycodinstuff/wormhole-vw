@@ -48,10 +48,10 @@ void main(){
   vec2 this_pos=correct_uv*u_resolution;
   vec4 prePoint=texture2D(input_points,correct_uv);
   vec4 col;
-  if(!approxEqual(prePoint.a,0.)){
+  if(prePoint.a<.1){
     col=posToCol(this_pos);
   }else{
-    col=vec4(0.,0.,1.,1.);
+    col=vec4(0.,0.,1.,0.);
   }
   gl_FragColor=col;
 }
