@@ -50,7 +50,7 @@ ehthumbs_vista.db
 
 # Dump file
 *.stackdump
-
+*.map
 # Folder config file
 [Dd]esktop.ini
 
