@@ -32662,16 +32662,24 @@ var Controls = function (_super) {
       }
     }, "V")), _react.default.createElement("div", {
       className: 'output-text'
-    }, _react.default.createElement("h4", null, "Output"), _react.default.createElement(_typewriterEffect.default, {
+    }, _react.default.createElement("h4", null, "Output"), _react.default.createElement("div", {
+      style: {
+        overflowY: 'scroll',
+        scrollbarWidth: '8px',
+        maxHeight: '500px',
+        width: '100%',
+        overflowX: 'hidden'
+      }
+    }, _react.default.createElement(_typewriterEffect.default, {
       options: {
         strings: _writing.default,
         cursor: '',
         autoStart: true,
-        loop: true,
+        loop: false,
         delay: 16,
         wrapperClassName: 'output-small'
       }
-    })));
+    }))));
   };
 
   return Controls;
@@ -32726,6 +32734,8 @@ var Viewport = function (_super) {
     var _this = _super !== null && _super.apply(this, arguments) || this;
 
     _this.state = {};
+    _this.videoRef = _react.default.createRef();
+    _this.audioRef = _react.default.createRef();
     return _this;
   }
 
@@ -32736,10 +32746,20 @@ var Viewport = function (_super) {
         height: window.innerHeight
       }
     }, _react.default.createElement("video", {
+      ref: this.videoRef,
+      loop: true,
+      hidden: true,
       muted: true,
       autoPlay: true,
       src: this.context.videoURL
+    }), _react.default.createElement("canvas", {
+      id: 'gl'
+    }), _react.default.createElement("canvas", {
+      hidden: true,
+      id: 'text'
     }), _react.default.createElement("audio", {
+      ref: this.audioRef,
+      loop: true,
       src: this.context.audioURL,
       autoPlay: true
     }));

@@ -66,16 +66,26 @@ export default class Controls extends Component<Props, State> {
         </div>
         <div className='output-text'>
           <h4>Output</h4>
-          <Typewriter
-            options={{
-              strings: text,
-              cursor: '',
-              autoStart: true,
-              loop: true,
-              delay: 16,
-              wrapperClassName: 'output-small',
+          <div
+            style={{
+              overflowY: 'scroll',
+              scrollbarWidth: '8px',
+              maxHeight: '500px',
+              width: '100%',
+              overflowX: 'hidden',
             }}
-          />
+          >
+            <Typewriter
+              options={{
+                strings: text,
+                cursor: '',
+                autoStart: true,
+                loop: false,
+                delay: 16,
+                wrapperClassName: 'output-small',
+              }}
+            />
+          </div>
         </div>
       </div>
     );

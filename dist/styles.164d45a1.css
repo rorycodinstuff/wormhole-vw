@@ -44,11 +44,15 @@ h3 {
   padding: 0 32px 0 32px;
   margin-bottom: 8em;
   margin-top: 8em;
+  width: 100%;
 }
 
 .viewport {
-  background-color: #373737;
+  background-color: #0f0f0f;
   size: 100% 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .button-con {
@@ -61,16 +65,20 @@ h3 {
   text-align: center;
 }
 
-video {
-  width: minmax(auto, 100%);
-  height: 50%;
-  margin: auto;
+video,
+canvas {
+  height: minmax(100%, auto);
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-span.output-small {
+.Typewriter {
   font-size: 10px;
   line-height: normal;
+  max-width: inherit;
   overflow: scroll;
+  white-space: pre;
 }
 
 /*# sourceMappingURL=/wormhole-dwf2019/dist/styles.164d45a1.css.map */
