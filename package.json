@@ -8,7 +8,7 @@
   "license": "none",
   "private": false,
   "scripts": {
-    "start:dev": "parcel src/index.html --port=8080 --no-hmr --public-url='/dist'"
+    "start:dev": "parcel src/index.html --port=8080 --no-hmr --public-url='/wormhole-dwf2019/dist'"
   },
   "dependencies": {
     "react": "^16.10.2",
