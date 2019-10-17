@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReadyButton from './ReadyButton';
 import LoadingText from './LoadingText';
+import { controllerContext } from './contContext';
+import Controller from './Controller';
 interface Props {
   passThroughFunc: VoidFunction;
 }
@@ -9,20 +11,16 @@ interface State {
   text: string;
 }
 
-export default class LoadingScreen extends Component<Props, State> {
+class LoadingScreen extends Component<Props, State> {
   state = { hasLoaded: false, text: Math.floor(Date.now() / 1).toString(16) };
   animReq: number = 0;
-  updateTime = () => {
-    this.setState({ text: Math.floor(Date.now() / 50).toString(16) });
-    this.animReq = requestAnimationFrame(this.updateTime);
-  };
-
+  context!: React.ContextType<typeof controllerContext>;
   componentDidMount() {
-    this.animReq = requestAnimationFrame(this.updateTime);
-    this.setState({ hasLoaded: true });
+    this.context.addReadyFunction(this.loadHandler);
   }
+  loadHandler = () => this.setState({ hasLoaded: true });
   componentWillUnmount() {
-    cancelAnimationFrame(this.animReq);
+    this.context.removeReadyFunction(this.loadHandler);
   }
   render() {
     return (
@@ -60,3 +58,5 @@ export default class LoadingScreen extends Component<Props, State> {
     );
   }
 }
+LoadingScreen.contextType = controllerContext;
+export default LoadingScreen;

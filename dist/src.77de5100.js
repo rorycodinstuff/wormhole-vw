@@ -31999,54 +31999,53 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return extendStatics(d, b);
+  };
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  return function (d, b) {
+    extendStatics(d, b);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function __() {
+      this.constructor = d;
+    }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var ReadyButton =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(ReadyButton, _Component);
+var ReadyButton = function (_super) {
+  __extends(ReadyButton, _super);
 
   function ReadyButton() {
-    var _this;
+    var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _classCallCheck(this, ReadyButton);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ReadyButton).apply(this, arguments));
     _this.state = {
       loading: true
     };
     return _this;
   }
 
-  _createClass(ReadyButton, [{
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("button", {
-        onClick: this.props.onPress
-      }, "Ready! Click here to begin");
-    }
-  }]);
+  ReadyButton.prototype.render = function () {
+    return _react.default.createElement("button", {
+      onClick: this.props.onPress
+    }, "Ready! Click here to begin");
+  };
 
   return ReadyButton;
 }(_react.Component);
 
-exports.default = ReadyButton;
+var _default = ReadyButton;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"reactModules/LoadingText.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -32061,35 +32060,36 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return extendStatics(d, b);
+  };
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  return function (d, b) {
+    extendStatics(d, b);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function __() {
+      this.constructor = d;
+    }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var LoadingText =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(LoadingText, _Component);
+var LoadingText = function (_super) {
+  __extends(LoadingText, _super);
 
   function LoadingText() {
-    var _this;
+    var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _classCallCheck(this, LoadingText);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(LoadingText).apply(this, arguments));
     _this.state = {
       animProg: 0
     };
@@ -32112,18 +32112,241 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(LoadingText, [{
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("div", null, "Loading", '.'.repeat(this.state.animProg));
-    }
-  }]);
+  LoadingText.prototype.render = function () {
+    return _react.default.createElement("div", null, "Loading", '.'.repeat(this.state.animProg));
+  };
 
   return LoadingText;
 }(_react.Component);
 
-exports.default = LoadingText;
-},{"react":"../node_modules/react/index.js"}],"reactModules/LoadingScreen.tsx":[function(require,module,exports) {
+var _default = LoadingText;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"reactModules/Controller.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+var __generator = void 0 && (void 0).__generator || function (thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function () {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) try {
+      if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+      if (y = 0, t) op = [op[0] & 2, t.value];
+
+      switch (op[0]) {
+        case 0:
+        case 1:
+          t = op;
+          break;
+
+        case 4:
+          _.label++;
+          return {
+            value: op[1],
+            done: false
+          };
+
+        case 5:
+          _.label++;
+          y = op[1];
+          op = [0];
+          continue;
+
+        case 7:
+          op = _.ops.pop();
+
+          _.trys.pop();
+
+          continue;
+
+        default:
+          if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+            _ = 0;
+            continue;
+          }
+
+          if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+            _.label = op[1];
+            break;
+          }
+
+          if (op[0] === 6 && _.label < t[1]) {
+            _.label = t[1];
+            t = op;
+            break;
+          }
+
+          if (t && _.label < t[2]) {
+            _.label = t[2];
+
+            _.ops.push(op);
+
+            break;
+          }
+
+          if (t[2]) _.ops.pop();
+
+          _.trys.pop();
+
+          continue;
+      }
+
+      op = body.call(thisArg, _);
+    } catch (e) {
+      op = [6, e];
+      y = 0;
+    } finally {
+      f = t = 0;
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+};
+
+var default_1 = function () {
+  function default_1() {
+    var _this = this;
+
+    this.x = 0;
+    this.y = 0;
+    this.z = 0;
+    this.loadingHandlers = new Set();
+
+    this.addReadyFunction = function (func) {
+      _this.loadingHandlers.add(func);
+    };
+
+    this.removeReadyFunction = function (func) {
+      _this.loadingHandlers.delete(func);
+    };
+  }
+
+  default_1.prototype.fetchFiles = function () {
+    return __awaiter(this, void 0, void 0, function () {
+      var audioResp, videoResp, _a, _b;
+
+      return __generator(this, function (_c) {
+        switch (_c.label) {
+          case 0:
+            return [4, window.fetch('https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/RubySolly-Hurihuri.mp3')];
+
+          case 1:
+            audioResp = _c.sent();
+            return [4, window.fetch('https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/640x480.webm')];
+
+          case 2:
+            videoResp = _c.sent();
+            _a = this;
+            return [4, audioResp.blob()];
+
+          case 3:
+            _a.audio = _c.sent();
+            _b = this;
+            return [4, videoResp.blob()];
+
+          case 4:
+            _b.video = _c.sent();
+            this.audioURL = URL.createObjectURL(this.audio);
+            this.videoURL = URL.createObjectURL(this.video);
+            this.loadingHandlers.forEach(function (f) {
+              return f();
+            });
+            return [2];
+        }
+      });
+    });
+  };
+
+  return default_1;
+}();
+
+var _default = default_1;
+exports.default = _default;
+},{}],"reactModules/contContext.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.controllerContext = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Controller = _interopRequireDefault(require("./Controller"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var controllerContext = _react.default.createContext(new _Controller.default());
+
+exports.controllerContext = controllerContext;
+},{"react":"../node_modules/react/index.js","./Controller":"reactModules/Controller.ts"}],"reactModules/LoadingScreen.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32137,95 +32360,90 @@ var _ReadyButton = _interopRequireDefault(require("./ReadyButton"));
 
 var _LoadingText = _interopRequireDefault(require("./LoadingText"));
 
+var _contContext = require("./contContext");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return extendStatics(d, b);
+  };
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  return function (d, b) {
+    extendStatics(d, b);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function __() {
+      this.constructor = d;
+    }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var LoadingScreen =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(LoadingScreen, _Component);
+var LoadingScreen = function (_super) {
+  __extends(LoadingScreen, _super);
 
   function LoadingScreen() {
-    var _this;
+    var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _classCallCheck(this, LoadingScreen);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(LoadingScreen).apply(this, arguments));
     _this.state = {
       hasLoaded: false,
       text: Math.floor(Date.now() / 1).toString(16)
     };
     _this.animReq = 0;
 
-    _this.updateTime = function () {
-      _this.setState({
-        text: Math.floor(Date.now() / 50).toString(16)
+    _this.loadHandler = function () {
+      return _this.setState({
+        hasLoaded: true
       });
-
-      _this.animReq = requestAnimationFrame(_this.updateTime);
     };
 
     return _this;
   }
 
-  _createClass(LoadingScreen, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.animReq = requestAnimationFrame(this.updateTime);
-      this.setState({
-        hasLoaded: true
-      });
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      cancelAnimationFrame(this.animReq);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("div", {
-        className: 'loading-screen'
-      }, _react.default.createElement("div", {
-        style: {
-          gridArea: 'cn'
-        }
-      }, _react.default.createElement("h1", {
-        style: {
-          textAlign: 'center'
-        }
-      }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist will independently respond to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, "This piece has an audio component and uses webGL which requires a recent computer, it is also optemised for a 16:10 aspect ratio screen"), _react.default.createElement("p", null, this.state.text), this.state.hasLoaded ? _react.default.createElement(_ReadyButton.default, {
-        onPress: this.props.passThroughFunc
-      }) : _react.default.createElement(_LoadingText.default, null)));
-    }
-  }]);
+  LoadingScreen.prototype.componentDidMount = function () {
+    this.context.addReadyFunction(this.loadHandler);
+  };
+
+  LoadingScreen.prototype.componentWillUnmount = function () {
+    this.context.removeReadyFunction(this.loadHandler);
+  };
+
+  LoadingScreen.prototype.render = function () {
+    return _react.default.createElement("div", {
+      className: 'loading-screen'
+    }, _react.default.createElement("div", {
+      style: {
+        gridArea: 'cn'
+      }
+    }, _react.default.createElement("h1", {
+      style: {
+        textAlign: 'center'
+      }
+    }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist will independently respond to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, "This piece has an audio component and uses webGL which requires a recent computer, it is also optemised for a 16:10 aspect ratio screen"), _react.default.createElement("p", null, this.state.text), this.state.hasLoaded ? _react.default.createElement(_ReadyButton.default, {
+      onPress: this.props.passThroughFunc
+    }) : _react.default.createElement(_LoadingText.default, null)));
+  };
 
   return LoadingScreen;
 }(_react.Component);
 
-exports.default = LoadingScreen;
-},{"react":"../node_modules/react/index.js","./ReadyButton":"reactModules/ReadyButton.tsx","./LoadingText":"reactModules/LoadingText.tsx"}],"reactModules/keyButton.tsx":[function(require,module,exports) {
+LoadingScreen.contextType = _contContext.controllerContext;
+var _default = LoadingScreen;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./ReadyButton":"reactModules/ReadyButton.tsx","./LoadingText":"reactModules/LoadingText.tsx","./contContext":"reactModules/contContext.ts"}],"reactModules/keyButton.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32239,41 +32457,42 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return extendStatics(d, b);
+  };
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  return function (d, b) {
+    extendStatics(d, b);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function __() {
+      this.constructor = d;
+    }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var keyButton =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(keyButton, _Component);
+var keyButton = function (_super) {
+  __extends(keyButton, _super);
 
   function keyButton() {
-    var _this;
+    var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _classCallCheck(this, keyButton);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(keyButton).apply(this, arguments));
     _this.state = {};
 
     _this.onKeyPress = function (e) {
-      var _this$props = _this.props,
-          key = _this$props.key,
-          func = _this$props.func;
+      var _a = _this.props,
+          key = _a.key,
+          func = _a.func;
       if (e.key === key) func();
     };
 
@@ -32288,25 +32507,37 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(keyButton, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+  keyButton.prototype.render = function () {
+    var _this = this;
 
-      return _react.default.createElement("button", {
-        type: 'button',
-        onClick: function onClick() {
-          return _this2.props.func();
-        }
-      }, this.props.children);
-    }
-  }]);
+    return _react.default.createElement("button", {
+      type: 'button',
+      onClick: function () {
+        return _this.props.func();
+      }
+    }, this.props.children);
+  };
 
   return keyButton;
 }(_react.Component);
 
-exports.default = keyButton;
-},{"react":"../node_modules/react/index.js"}],"reactModules/Controls.tsx":[function(require,module,exports) {
+var _default = keyButton;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"../node_modules/typewriter-effect/dist/react.js":[function(require,module,exports) {
+var define;
+!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("react")):"function"==typeof define&&define.amd?define("Typewriter",["react"],t):"object"==typeof exports?exports.Typewriter=t(require("react")):e.Typewriter=t(e.react)}("undefined"!=typeof self?self:this,(function(e){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=9)}([function(e,t,n){(function(t){for(var r=n(3),o="undefined"==typeof window?t:window,i=["moz","webkit"],a="AnimationFrame",s=o["request"+a],u=o["cancel"+a]||o["cancelRequest"+a],c=0;!s&&c<i.length;c++)s=o[i[c]+"Request"+a],u=o[i[c]+"Cancel"+a]||o[i[c]+"CancelRequest"+a];if(!s||!u){var l=0,p=0,f=[];s=function(e){if(0===f.length){var t=r(),n=Math.max(0,1e3/60-(t-l));l=n+t,setTimeout((function(){var e=f.slice(0);f.length=0;for(var t=0;t<e.length;t++)if(!e[t].cancelled)try{e[t].callback(l)}catch(e){setTimeout((function(){throw e}),0)}}),Math.round(n))}return f.push({handle:++p,callback:e,cancelled:!1}),p},u=function(e){for(var t=0;t<f.length;t++)f[t].handle===e&&(f[t].cancelled=!0)}}e.exports=function(e){return s.call(o,e)},e.exports.cancel=function(){u.apply(o,arguments)},e.exports.polyfill=function(e){e||(e=o),e.requestAnimationFrame=s,e.cancelAnimationFrame=u}}).call(this,n(2))},function(e,t,n){"use strict";n.r(t);var r=n(0),o=n.n(r),i=function(e){return new RegExp(/<[a-z][\s\S]*>/i).test(e)},a=function(e){var t=document.createElement("div");return t.innerHTML=e,t.childNodes},s=function(e,t){return Math.floor(Math.random()*(t-e+1))+e},u=function(e){var t=document.createElement("style");t.appendChild(document.createTextNode(e)),document.head.appendChild(t)},c={TYPE_CHARACTER:"TYPE_CHARACTER",REMOVE_CHARACTER:"REMOVE_CHARACTER",REMOVE_ALL:"REMOVE_ALL",REMOVE_LAST_VISIBLE_NODE:"REMOVE_LAST_VISIBLE_NODE",PAUSE_FOR:"PAUSE_FOR",CALL_FUNCTION:"CALL_FUNCTION",ADD_HTML_TAG_ELEMENT:"ADD_HTML_TAG_ELEMENT",REMOVE_HTML_TAG_ELEMENT:"REMOVE_HTML_TAG_ELEMENT",CHANGE_DELETE_SPEED:"CHANGE_DELETE_SPEED",CHANGE_DELAY:"CHANGE_DELAY",CHANGE_CURSOR:"CHANGE_CURSOR"},l={HTML_TAG:"HTML_TAG",TEXT_NODE:"TEXT_NODE"};function p(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{},r=Object.keys(n);"function"==typeof Object.getOwnPropertySymbols&&(r=r.concat(Object.getOwnPropertySymbols(n).filter((function(e){return Object.getOwnPropertyDescriptor(n,e).enumerable})))),r.forEach((function(t){E(e,t,n[t])}))}return e}function f(e){return function(e){if(Array.isArray(e)){for(var t=0,n=new Array(e.length);t<e.length;t++)n[t]=e[t];return n}}(e)||function(e){if(Symbol.iterator in Object(e)||"[object Arguments]"===Object.prototype.toString.call(e))return Array.from(e)}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance")}()}function d(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function E(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var v=function(){function e(t,n){var u=this;if(function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),E(this,"state",{cursorAnimation:null,lastFrameTime:null,pauseUntil:null,eventQueue:[],eventLoop:null,eventLoopPaused:!1,reverseCalledEvents:[],calledEvents:[],visibleNodes:[],initialOptions:null,elements:{container:null,wrapper:document.createElement("span"),cursor:document.createElement("span")}}),E(this,"options",{strings:null,cursor:"|",delay:"natural",deleteSpeed:"natural",loop:!1,autoStart:!1,devMode:!1,skipAddStyles:!1,wrapperClassName:"Typewriter__wrapper",cursorClassName:"Typewriter__cursor",stringSplitter:null}),E(this,"setupWrapperElement",(function(){u.state.elements.wrapper.className=u.options.wrapperClassName,u.state.elements.cursor.className=u.options.cursorClassName,u.state.elements.cursor.innerHTML=u.options.cursor,u.state.elements.container.innerHTML="",u.state.elements.container.appendChild(u.state.elements.wrapper),u.state.elements.container.appendChild(u.state.elements.cursor)})),E(this,"start",(function(){return u.state.eventLoopPaused=!1,u.runEventLoop(),u})),E(this,"pause",(function(){return u.state.eventLoopPaused=!0,u})),E(this,"stop",(function(){return u.state.eventLoop&&(Object(r.cancel)(u.state.eventLoop),u.state.eventLoop=null),u})),E(this,"pauseFor",(function(e){return u.addEventToQueue(c.PAUSE_FOR,{ms:e}),u})),E(this,"typeOutAllStrings",(function(){return"string"==typeof u.options.strings?(u.typeString(u.options.strings).pauseFor(1500),u):(u.options.strings.forEach((function(e){u.typeString(e).pauseFor(1500).deleteAll()})),u)})),E(this,"typeString",(function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;if(i(e))return u.typeOutHTMLString(e,t);if(e){var n=u.options||{},r=n.stringSplitter,o="function"==typeof r?r(e):e.split("");u.typeCharacters(o,t)}return u})),E(this,"typeOutHTMLString",(function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,n=a(e);if(n.length>0)for(var r=0;r<n.length;r++){var o=n[r],i=o.innerHTML;o&&3!==o.nodeType?(o.innerHTML="",u.addEventToQueue(c.ADD_HTML_TAG_ELEMENT,{node:o,parentNode:t}),u.typeString(i,o)):o.textContent&&u.typeString(o.textContent,t)}return u})),E(this,"deleteAll",(function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"natural";return u.addEventToQueue(c.REMOVE_ALL,{speed:e}),u})),E(this,"changeDeleteSpeed",(function(e){if(!e)throw new Error("Must provide new delete speed");return u.addEventToQueue(c.CHANGE_DELETE_SPEED,{speed:e}),u})),E(this,"changeDelay",(function(e){if(!e)throw new Error("Must provide new delay");return u.addEventToQueue(c.CHANGE_DELAY,{delay:e}),u})),E(this,"changeCursor",(function(e){if(!e)throw new Error("Must provide new cursor");return u.addEventToQueue(c.CHANGE_CURSOR,{cursor:e}),u})),E(this,"deleteChars",(function(e){if(!e)throw new Error("Must provide amount of characters to delete");for(var t=0;t<e;t++)u.addEventToQueue(c.REMOVE_CHARACTER);return u})),E(this,"callFunction",(function(e,t){if(!e||"function"!=typeof e)throw new Error("Callbak must be a function");return u.addEventToQueue(c.CALL_FUNCTION,{cb:e,thisArg:t}),u})),E(this,"typeCharacters",(function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;if(!e||!Array.isArray(e))throw new Error("Characters must be an array");return e.forEach((function(e){u.addEventToQueue(c.TYPE_CHARACTER,{character:e,node:t})})),u})),E(this,"removeCharacters",(function(e){if(!e||!Array.isArray(e))throw new Error("Characters must be an array");return e.forEach((function(){u.addEventToQueue(c.REMOVE_CHARACTER)})),u})),E(this,"addEventToQueue",(function(e,t){var n=arguments.length>2&&void 0!==arguments[2]&&arguments[2];return u.addEventToStateProperty(e,t,n,"eventQueue")})),E(this,"addReverseCalledEvent",(function(e,t){var n=arguments.length>2&&void 0!==arguments[2]&&arguments[2],r=u.options.loop;return r?u.addEventToStateProperty(e,t,n,"reverseCalledEvents"):u})),E(this,"addEventToStateProperty",(function(e,t){var n=arguments.length>2&&void 0!==arguments[2]&&arguments[2],r=arguments.length>3?arguments[3]:void 0,o={eventName:e,eventArgs:t||{}};return u.state[r]=n?[o].concat(f(u.state[r])):[].concat(f(u.state[r]),[o]),u})),E(this,"runEventLoop",(function(){u.state.lastFrameTime||(u.state.lastFrameTime=Date.now());var e=Date.now(),t=e-u.state.lastFrameTime;if(!u.state.eventQueue.length){if(!u.options.loop)return;u.state.eventQueue=f(u.state.calledEvents),u.state.calledEvents=[],u.options=p({},u.state.initialOptions)}if(u.state.eventLoop=o()(u.runEventLoop),!u.state.eventLoopPaused){if(u.state.pauseUntil){if(e<u.state.pauseUntil)return;u.state.pauseUntil=null}var n=f(u.state.eventQueue),r=n.shift(),i=0;if(!(t<=(i=r.eventName===c.REMOVE_LAST_VISIBLE_NODE||r.eventName===c.REMOVE_CHARACTER?"natural"===u.options.deleteSpeed?s(40,80):u.options.deleteSpeed:"natural"===u.options.delay?s(120,160):u.options.delay))){var a=r.eventName,d=r.eventArgs;switch(u.logInDevMode({currentEvent:r,state:u.state,delay:i}),a){case c.TYPE_CHARACTER:var E=d.character,v=d.node,h=document.createTextNode(E);v?v.appendChild(h):u.state.elements.wrapper.appendChild(h),u.state.visibleNodes=[].concat(f(u.state.visibleNodes),[{type:l.TEXT_NODE,node:h}]);break;case c.REMOVE_CHARACTER:n.unshift({eventName:c.REMOVE_LAST_VISIBLE_NODE,eventArgs:{removingCharacterNode:!0}});break;case c.PAUSE_FOR:var y=r.eventArgs.ms;u.state.pauseUntil=Date.now()+parseInt(y);break;case c.CALL_FUNCTION:var m=r.eventArgs,T=m.cb,_=m.thisArg;T.call(_,{elements:u.state.elements});break;case c.ADD_HTML_TAG_ELEMENT:var A=r.eventArgs,w=A.node,g=A.parentNode;g?g.appendChild(w):u.state.elements.wrapper.appendChild(w),u.state.visibleNodes=[].concat(f(u.state.visibleNodes),[{type:l.HTML_TAG,node:w,parentNode:g||u.state.elements.wrapper}]);break;case c.REMOVE_ALL:var b=u.state.visibleNodes,O=d.speed,L=[];O&&L.push({eventName:c.CHANGE_DELETE_SPEED,eventArgs:{speed:O,temp:!0}});for(var C=0,S=b.length;C<S;C++)L.push({eventName:c.REMOVE_LAST_VISIBLE_NODE,eventArgs:{removingCharacterNode:!1}});O&&L.push({eventName:c.CHANGE_DELETE_SPEED,eventArgs:{speed:u.options.deleteSpeed,temp:!0}}),n.unshift.apply(n,L);break;case c.REMOVE_LAST_VISIBLE_NODE:var N=r.eventArgs.removingCharacterNode;if(u.state.visibleNodes.length){var R=u.state.visibleNodes.pop(),M=R.type,D=R.node;D.parentNode.removeChild(D),M===l.HTML_TAG&&N&&n.unshift({eventName:c.REMOVE_LAST_VISIBLE_NODE,eventArgs:{}})}break;case c.CHANGE_DELETE_SPEED:u.options.deleteSpeed=r.eventArgs.speed;break;case c.CHANGE_DELAY:u.options.delay=r.eventArgs.delay;break;case c.CHANGE_CURSOR:u.options.cursor=r.eventArgs.cursor,u.state.elements.cursor.innerHTML=r.eventArgs.cursor}u.options.loop&&(r.eventName===c.REMOVE_LAST_VISIBLE_NODE||r.eventArgs&&r.eventArgs.temp||(u.state.calledEvents=[].concat(f(u.state.calledEvents),[r]))),u.state.eventQueue=n,u.state.lastFrameTime=e}}})),!t)throw new Error("No container element was provided");if("string"==typeof t){var d=document.querySelector(t);if(!d)throw new Error("Could not find container element");this.state.elements.container=d}else this.state.elements.container=t;n&&(this.options=p({},this.options,n)),this.state.initialOptions=p({},this.options),this.init()}var t,n,v;return t=e,(n=[{key:"init",value:function(){this.setupWrapperElement(),this.addEventToQueue(c.CHANGE_CURSOR,{cursor:this.options.cursor},!0),this.addEventToQueue(c.REMOVE_ALL,null,!0),!window||window.___TYPEWRITER_JS_STYLES_ADDED___||this.options.skipAddStyles||(u(".Typewriter__cursor{-webkit-animation:Typewriter-cursor 1s infinite;animation:Typewriter-cursor 1s infinite;margin-left:1px}@-webkit-keyframes Typewriter-cursor{0%{opacity:0}50%{opacity:1}100%{opacity:0}}@keyframes Typewriter-cursor{0%{opacity:0}50%{opacity:1}100%{opacity:0}}"),window.___TYPEWRITER_JS_STYLES_ADDED___=!0),!0===this.options.autoStart&&this.options.strings&&this.typeOutAllStrings().start()}},{key:"logInDevMode",value:function(e){this.options.devMode&&console.log(e)}}])&&d(t.prototype,n),v&&d(t,v),e}();n.d(t,"default",(function(){return v}))},function(e,t){var n;n=function(){return this}();try{n=n||new Function("return this")()}catch(e){"object"==typeof window&&(n=window)}e.exports=n},function(e,t,n){(function(t){(function(){var n,r,o,i,a,s;"undefined"!=typeof performance&&null!==performance&&performance.now?e.exports=function(){return performance.now()}:null!=t&&t.hrtime?(e.exports=function(){return(n()-a)/1e6},r=t.hrtime,i=(n=function(){var e;return 1e9*(e=r())[0]+e[1]})(),s=1e9*t.uptime(),a=i-s):Date.now?(e.exports=function(){return Date.now()-o},o=Date.now()):(e.exports=function(){return(new Date).getTime()-o},o=(new Date).getTime())}).call(this)}).call(this,n(4))},function(e,t){var n,r,o=e.exports={};function i(){throw new Error("setTimeout has not been defined")}function a(){throw new Error("clearTimeout has not been defined")}function s(e){if(n===setTimeout)return setTimeout(e,0);if((n===i||!n)&&setTimeout)return n=setTimeout,setTimeout(e,0);try{return n(e,0)}catch(t){try{return n.call(null,e,0)}catch(t){return n.call(this,e,0)}}}!function(){try{n="function"==typeof setTimeout?setTimeout:i}catch(e){n=i}try{r="function"==typeof clearTimeout?clearTimeout:a}catch(e){r=a}}();var u,c=[],l=!1,p=-1;function f(){l&&u&&(l=!1,u.length?c=u.concat(c):p=-1,c.length&&d())}function d(){if(!l){var e=s(f);l=!0;for(var t=c.length;t;){for(u=c,c=[];++p<t;)u&&u[p].run();p=-1,t=c.length}u=null,l=!1,function(e){if(r===clearTimeout)return clearTimeout(e);if((r===a||!r)&&clearTimeout)return r=clearTimeout,clearTimeout(e);try{r(e)}catch(t){try{return r.call(null,e)}catch(t){return r.call(this,e)}}}(e)}}function E(e,t){this.fun=e,this.array=t}function v(){}o.nextTick=function(e){var t=new Array(arguments.length-1);if(arguments.length>1)for(var n=1;n<arguments.length;n++)t[n-1]=arguments[n];c.push(new E(e,t)),1!==c.length||l||s(d)},E.prototype.run=function(){this.fun.apply(null,this.array)},o.title="browser",o.browser=!0,o.env={},o.argv=[],o.version="",o.versions={},o.on=v,o.addListener=v,o.once=v,o.off=v,o.removeListener=v,o.removeAllListeners=v,o.emit=v,o.prependListener=v,o.prependOnceListener=v,o.listeners=function(e){return[]},o.binding=function(e){throw new Error("process.binding is not supported")},o.cwd=function(){return"/"},o.chdir=function(e){throw new Error("process.chdir is not supported")},o.umask=function(){return 0}},function(t,n){t.exports=e},function(e,t,n){e.exports=n(7)()},function(e,t,n){"use strict";var r=n(8);function o(){}function i(){}i.resetWarningCache=o,e.exports=function(){function e(e,t,n,o,i,a){if(a!==r){var s=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw s.name="Invariant Violation",s}}function t(){return e}e.isRequired=e;var n={array:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:i,resetWarningCache:o};return n.PropTypes=n,n}},function(e,t,n){"use strict";e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},function(e,t,n){"use strict";n.r(t);var r=n(5),o=n.n(r),i=(n(6),n(1));function a(e){return(a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function s(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function u(e){return(u=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function c(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function l(e,t){return(l=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var p=function(e){function t(){var e,n,r,o,i;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);for(var s=arguments.length,l=new Array(s),p=0;p<s;p++)l[p]=arguments[p];return n=function(e,t){return!t||"object"!==a(t)&&"function"!=typeof t?c(e):t}(this,(e=u(t)).call.apply(e,[this].concat(l))),r=c(n),i={instance:null},(o="state")in r?Object.defineProperty(r,o,{value:i,enumerable:!0,configurable:!0,writable:!0}):r[o]=i,n}var n,r,p;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&l(e,t)}(t,e),n=t,(r=[{key:"componentDidMount",value:function(){var e=this,t=new i.default(this.typewriter,this.props.options);this.setState({instance:t},(function(){var n=e.props.onInit;n&&n(t)}))}},{key:"componentWillUnmount",value:function(){this.state.instance&&this.state.instance.stop()}},{key:"render",value:function(){var e=this;return o.a.createElement("div",{className:"Typewriter",ref:function(t){return e.typewriter=t}})}}])&&s(n.prototype,r),p&&s(n,p),t}(r.Component);n.d(t,"default",(function(){return p}))}]).default}));
+},{"react":"../node_modules/react/index.js"}],"writing.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.stuff = void 0;
+var stuff = "This is how time works&nbsp;&nbsp;&nbsp;we see&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;everything at once&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we don\u2019t<br>\nseparate moments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My mother walks the driveway&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;singing<br>\n in her latter years&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;laundry basket<br>\n & at the same time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I am being born&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& she takes photos<br>\n&nbsp;&nbsp;at my graduation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& my second graduation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& at the same time<br>\n&nbsp;&nbsp; she is standing on a tennis court&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in high school uniform&nbsp;&nbsp;&nbsp;& somewhere still<br>\n&nbsp;&nbsp;&nbsp;&nbsp;she doesn\u2019t exist&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& neither do &nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;The fabric of time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tears open&nbsp;&nbsp;&nbsp;&<br>\n&nbsp;&nbsp;&nbsp;&nbsp; folds &nbsp;&nbsp;&nbsp;over&nbsp;&nbsp;&nbsp;& there&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is a tidal wave rising here&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;soon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\u2018<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we can feel it &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I photograph&nbsp;&nbsp;&nbsp;picket signs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& at the same time<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; photographs are still being&nbsp;&nbsp;&nbsp;invented&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;white lace&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on pieces of card<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& at the same time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my body decomposes underground<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; worms crawl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;through my eyes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;like I am a castle<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If we travel &nbsp;&nbsp;&nbsp;through&nbsp;&nbsp;&nbsp;time&nbsp;&nbsp;&nbsp;like space&nbsp;&nbsp;&nbsp;we won\u2019t like&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;what we find<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; but we can hypothesise things&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;anyway&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;until the cows&nbsp;&nbsp;&nbsp;come<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is how time works&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we go back&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& back&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& back<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; My t\u012Bpuna&nbsp;&nbsp;&nbsp;stand&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on the shore&nbsp;&nbsp;&nbsp;welcoming&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& get shot for it<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I see&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blood spots&nbsp;&nbsp;&nbsp;on the sand&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& at the same time<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the ship never comes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we thrive<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& at the same time &nbsp;&nbsp;&nbsp;we fight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;our cousins&nbsp;&nbsp;&nbsp;anyway&nbsp;&nbsp;&nbsp;over kaimoana<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If we travel back far enough<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There\u2019ll be things<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; we don\u2019t want to see&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time frays &nbsp;&nbsp;&nbsp;tattered&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at the edges<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; & I want all of it&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at once&nbsp;&nbsp;&nbsp;enveloping me<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I hunger&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to know what has happened&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& what might<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; & &nbsp;&nbsp;&nbsp;what will&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to find a&nbsp;&nbsp;&nbsp;hole&nbsp;&nbsp;&nbsp;in the atmosphere<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; force open&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& explore it<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; even if it hurts<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This is how time works&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we create formulas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& escape<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;into fantasy<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My mokopuna wear&nbsp;&nbsp;&nbsp;solar powered shoes<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; that let them fly&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& at the same time&nbsp;&nbsp;&nbsp;I never had children<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we sit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;silent&nbsp;&nbsp;&nbsp;in a doctor\u2019s office<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; & at the same time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;my dad is a young man&nbsp;&nbsp;&nbsp;cycling<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the north island&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& at the same time&nbsp;&nbsp;&nbsp;that island\u2019s<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; being fished&nbsp;&nbsp;&nbsp;from the sea<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sweat on Maui\u2019s forearms&nbsp;&nbsp;&nbsp;the sun beating&nbsp;&nbsp;&nbsp;& being beaten<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; all of these moments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;weaving into each other<br>\nthe tarmac&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rumble&nbsp;&nbsp;&nbsp;s&nbsp;&nbsp;&nbsp;underneath us<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time tearing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apart&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apart<br>\n&nbsp;&nbsp; I am so scared&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of an ending<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sometimes<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I feel like<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I could just<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dis&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ha<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ha<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pe<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ha<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;But<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; then again<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; we\u2019re all&nbsp;&nbsp;&nbsp; still&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;here<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I carve my name<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on the arm of an&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;airplane seat<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we shoot through space&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;me & she<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with hands clasped&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tight<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we\u2019re at the beginning of a journey&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& at the middle<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& the end<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;but in this instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we\u2019re<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; just talking&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time weaves&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;around us<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in our pocket of sky<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;& if I could have anything&nbsp;&nbsp;&nbsp;in all of the parallel universes<br>\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it would be this<br>\n";
+exports.stuff = stuff;
+var _default = stuff;
+exports.default = _default;
+},{}],"reactModules/Controls.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32318,125 +32549,137 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _keyButton = _interopRequireDefault(require("./keyButton"));
 
+var _typewriterEffect = _interopRequireDefault(require("typewriter-effect"));
+
+var _writing = _interopRequireDefault(require("../writing"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return extendStatics(d, b);
+  };
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  return function (d, b) {
+    extendStatics(d, b);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function __() {
+      this.constructor = d;
+    }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var Controls =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Controls, _Component);
+var Controls = function (_super) {
+  __extends(Controls, _super);
 
   function Controls() {
-    var _this;
+    var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _classCallCheck(this, Controls);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Controls).apply(this, arguments));
     _this.state = {};
     return _this;
   }
 
-  _createClass(Controls, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+  Controls.prototype.render = function () {
+    var _this = this;
 
-      return _react.default.createElement("div", {
-        className: 'sidebar'
-      }, _react.default.createElement("div", null, _react.default.createElement("h3", null, "Wormhole Interaction Interface"), _react.default.createElement("p", null, "The interface is controlled through the keyboard or the following buttons")), _react.default.createElement("div", {
-        className: 'button-con'
-      }, _react.default.createElement("div", null), _react.default.createElement("div", null, "--"), _react.default.createElement("div", null, "-"), _react.default.createElement("div", null, "+"), _react.default.createElement("div", null, "++"), _react.default.createElement("div", null, "azimoth"), _react.default.createElement(_keyButton.default, {
-        key: 'q',
-        func: function func() {
-          return _this2;
-        }
-      }, "Q"), _react.default.createElement(_keyButton.default, {
-        key: 'w',
-        func: function func() {
-          return _this2;
-        }
-      }, "W"), _react.default.createElement(_keyButton.default, {
-        key: 'e',
-        func: function func() {
-          return _this2;
-        }
-      }, "E"), _react.default.createElement(_keyButton.default, {
-        key: 'r',
-        func: function func() {
-          return _this2;
-        }
-      }, "R"), _react.default.createElement("div", null, "altitude"), _react.default.createElement(_keyButton.default, {
-        key: 'a',
-        func: function func() {
-          return _this2;
-        }
-      }, "A"), _react.default.createElement(_keyButton.default, {
-        key: 's',
-        func: function func() {
-          return _this2;
-        }
-      }, "S"), _react.default.createElement(_keyButton.default, {
-        key: 'd',
-        func: function func() {
-          return _this2;
-        }
-      }, "D"), _react.default.createElement(_keyButton.default, {
-        key: 'f',
-        func: function func() {
-          return _this2;
-        }
-      }, "F"), _react.default.createElement("div", null, "tone"), _react.default.createElement(_keyButton.default, {
-        key: 'z',
-        func: function func() {
-          return _this2;
-        }
-      }, "Z"), _react.default.createElement(_keyButton.default, {
-        key: 'x',
-        func: function func() {
-          return _this2;
-        }
-      }, "X"), _react.default.createElement(_keyButton.default, {
-        key: 'c',
-        func: function func() {
-          return _this2;
-        }
-      }, "C"), _react.default.createElement(_keyButton.default, {
-        key: 'v',
-        func: function func() {
-          return _this2;
-        }
-      }, "V")), _react.default.createElement("div", {
-        className: 'output-text'
-      }, _react.default.createElement("h4", null, "Output")));
-    }
-  }]);
+    return _react.default.createElement("div", {
+      className: 'sidebar'
+    }, _react.default.createElement("div", null, _react.default.createElement("h3", null, "Wormhole Interaction Interface"), _react.default.createElement("p", null, "The interface is controlled through the keyboard or the following buttons")), _react.default.createElement("div", {
+      className: 'button-con'
+    }, _react.default.createElement("div", null), _react.default.createElement("div", null, "--"), _react.default.createElement("div", null, "-"), _react.default.createElement("div", null, "+"), _react.default.createElement("div", null, "++"), _react.default.createElement("div", null, "azimoth"), _react.default.createElement(_keyButton.default, {
+      key: 'q',
+      func: function () {
+        return _this;
+      }
+    }, "Q"), _react.default.createElement(_keyButton.default, {
+      key: 'w',
+      func: function () {
+        return _this;
+      }
+    }, "W"), _react.default.createElement(_keyButton.default, {
+      key: 'e',
+      func: function () {
+        return _this;
+      }
+    }, "E"), _react.default.createElement(_keyButton.default, {
+      key: 'r',
+      func: function () {
+        return _this;
+      }
+    }, "R"), _react.default.createElement("div", null, "altitude"), _react.default.createElement(_keyButton.default, {
+      key: 'a',
+      func: function () {
+        return _this;
+      }
+    }, "A"), _react.default.createElement(_keyButton.default, {
+      key: 's',
+      func: function () {
+        return _this;
+      }
+    }, "S"), _react.default.createElement(_keyButton.default, {
+      key: 'd',
+      func: function () {
+        return _this;
+      }
+    }, "D"), _react.default.createElement(_keyButton.default, {
+      key: 'f',
+      func: function () {
+        return _this;
+      }
+    }, "F"), _react.default.createElement("div", null, "tone"), _react.default.createElement(_keyButton.default, {
+      key: 'z',
+      func: function () {
+        return _this;
+      }
+    }, "Z"), _react.default.createElement(_keyButton.default, {
+      key: 'x',
+      func: function () {
+        return _this;
+      }
+    }, "X"), _react.default.createElement(_keyButton.default, {
+      key: 'c',
+      func: function () {
+        return _this;
+      }
+    }, "C"), _react.default.createElement(_keyButton.default, {
+      key: 'v',
+      func: function () {
+        return _this;
+      }
+    }, "V")), _react.default.createElement("div", {
+      className: 'output-text'
+    }, _react.default.createElement("h4", null, "Output"), _react.default.createElement(_typewriterEffect.default, {
+      options: {
+        strings: _writing.default,
+        cursor: '',
+        autoStart: true,
+        loop: true,
+        delay: 16,
+        wrapperClassName: 'output-small'
+      }
+    })));
+  };
 
   return Controls;
 }(_react.Component);
 
-exports.default = Controls;
-},{"react":"../node_modules/react/index.js","./keyButton":"reactModules/keyButton.tsx"}],"reactModules/Viewport.tsx":[function(require,module,exports) {
+var _default = Controls;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./keyButton":"reactModules/keyButton.tsx","typewriter-effect":"../node_modules/typewriter-effect/dist/react.js","../writing":"writing.ts"}],"reactModules/Viewport.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32446,60 +32689,69 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _contContext = require("./contContext");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return extendStatics(d, b);
+  };
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  return function (d, b) {
+    extendStatics(d, b);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function __() {
+      this.constructor = d;
+    }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var Viewport =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Viewport, _Component);
+var Viewport = function (_super) {
+  __extends(Viewport, _super);
 
   function Viewport() {
-    var _this;
+    var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _classCallCheck(this, Viewport);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Viewport).apply(this, arguments));
     _this.state = {};
     return _this;
   }
 
-  _createClass(Viewport, [{
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("div", {
-        className: 'viewport',
-        style: {
-          height: window.innerHeight
-        }
-      }, "a");
-    }
-  }]);
+  Viewport.prototype.render = function () {
+    return _react.default.createElement("div", {
+      className: 'viewport',
+      style: {
+        height: window.innerHeight
+      }
+    }, _react.default.createElement("video", {
+      muted: true,
+      autoPlay: true,
+      src: this.context.videoURL
+    }), _react.default.createElement("audio", {
+      src: this.context.audioURL,
+      autoPlay: true
+    }));
+  };
 
+  Viewport.contextType = _contContext.controllerContext;
   return Viewport;
 }(_react.Component);
 
-exports.default = Viewport;
-},{"react":"../node_modules/react/index.js"}],"reactModules/MainScreen.tsx":[function(require,module,exports) {
+var _default = Viewport;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./contContext":"reactModules/contContext.ts"}],"reactModules/MainScreen.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32519,55 +32771,54 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return extendStatics(d, b);
+  };
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  return function (d, b) {
+    extendStatics(d, b);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function __() {
+      this.constructor = d;
+    }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var MainScreen =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(MainScreen, _Component);
+var MainScreen = function (_super) {
+  __extends(MainScreen, _super);
 
   function MainScreen() {
-    var _this;
+    var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _classCallCheck(this, MainScreen);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MainScreen).apply(this, arguments));
     _this.state = {};
     return _this;
   }
 
-  _createClass(MainScreen, [{
-    key: "render",
-    value: function render() {
-      return _react.default.createElement("div", {
-        className: 'main-screen',
-        style: {
-          height: window.innerHeight
-        }
-      }, _react.default.createElement(_Controls.default, null), _react.default.createElement(_Viewport.default, null));
-    }
-  }]);
+  MainScreen.prototype.render = function () {
+    return _react.default.createElement("div", {
+      className: 'main-screen',
+      style: {
+        height: window.innerHeight
+      }
+    }, _react.default.createElement(_Controls.default, null), _react.default.createElement(_Viewport.default, null));
+  };
 
   return MainScreen;
 }(_react.Component);
 
-exports.default = MainScreen;
+var _default = MainScreen;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js","./Controls":"reactModules/Controls.tsx","./Viewport":"reactModules/Viewport.tsx"}],"reactModules/SceneController.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -32582,29 +32833,39 @@ var _LoadingScreen = _interopRequireDefault(require("./LoadingScreen"));
 
 var _MainScreen = _interopRequireDefault(require("./MainScreen"));
 
+var _Controller = _interopRequireDefault(require("./Controller"));
+
+var _contContext = require("./contContext");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    return extendStatics(d, b);
+  };
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  return function (d, b) {
+    extendStatics(d, b);
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+    function __() {
+      this.constructor = d;
+    }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
 
 var SCENE;
 
@@ -32613,24 +32874,20 @@ var SCENE;
   SCENE[SCENE["play"] = 1] = "play";
 })(SCENE || (SCENE = {}));
 
-var SceneController =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(SceneController, _Component);
+var SceneController = function (_super) {
+  __extends(SceneController, _super);
 
   function SceneController() {
-    var _this;
+    var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _classCallCheck(this, SceneController);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SceneController).apply(this, arguments));
     _this.state = {
-      scene: SCENE.load
+      scene: SCENE.load,
+      controller: new _Controller.default()
     };
 
     _this.swapScenes = function () {
-      return _this.setState(function (_ref) {
-        var scene = _ref.scene;
+      return _this.setState(function (_a) {
+        var scene = _a.scene;
         return {
           scene: (scene + 1) % 2
         };
@@ -32640,20 +32897,24 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(SceneController, [{
-    key: "render",
-    value: function render() {
-      return this.state.scene === SCENE.load ? _react.default.createElement(_LoadingScreen.default, {
-        passThroughFunc: this.swapScenes
-      }) : _react.default.createElement(_MainScreen.default, null);
-    }
-  }]);
+  SceneController.prototype.componentDidMount = function () {
+    this.state.controller.fetchFiles();
+  };
+
+  SceneController.prototype.render = function () {
+    return _react.default.createElement(_contContext.controllerContext.Provider, {
+      value: this.state.controller
+    }, this.state.scene === SCENE.load ? _react.default.createElement(_LoadingScreen.default, {
+      passThroughFunc: this.swapScenes
+    }) : _react.default.createElement(_MainScreen.default, null));
+  };
 
   return SceneController;
 }(_react.Component);
 
-exports.default = SceneController;
-},{"react":"../node_modules/react/index.js","./LoadingScreen":"reactModules/LoadingScreen.tsx","./MainScreen":"reactModules/MainScreen.tsx"}],"app.tsx":[function(require,module,exports) {
+var _default = SceneController;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./LoadingScreen":"reactModules/LoadingScreen.tsx","./MainScreen":"reactModules/MainScreen.tsx","./Controller":"reactModules/Controller.ts","./contContext":"reactModules/contContext.ts"}],"app.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32669,7 +32930,7 @@ var _SceneController = _interopRequireDefault(require("./reactModules/SceneContr
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var run = function run() {
+var run = function () {
   (0, _reactDom.render)(_react.default.createElement(_SceneController.default, null), document.querySelector('#base-div'));
 };
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import B from './keyButton';
+import Typewriter from 'typewriter-effect';
+import text from '../writing';
 interface Props {}
 interface State {}
 
@@ -64,6 +66,16 @@ export default class Controls extends Component<Props, State> {
         </div>
         <div className='output-text'>
           <h4>Output</h4>
+          <Typewriter
+            options={{
+              strings: text,
+              cursor: '',
+              autoStart: true,
+              loop: true,
+              delay: 16,
+              wrapperClassName: 'output-small',
+            }}
+          />
         </div>
       </div>
     );

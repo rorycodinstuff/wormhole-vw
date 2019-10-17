@@ -61,4 +61,16 @@ h3 {
   text-align: center;
 }
 
+video {
+  width: minmax(auto, 100%);
+  height: 50%;
+  margin: auto;
+}
+
+span.output-small {
+  font-size: 10px;
+  line-height: normal;
+  overflow: scroll;
+}
+
 /*# sourceMappingURL=/wormhole-dwf2019/dist/styles.164d45a1.css.map */
