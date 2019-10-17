@@ -33,18 +33,18 @@ h3 {
 
 .main-screen {
   display: grid;
-  grid-template: "side" "main" auto/1fr 3fr;
+  grid-template: "side" "main" auto/25% 75%;
   width: 100%;
 }
 
 .sidebar {
   display: grid;
+  width: auto;
   row-gap: 4px;
   grid-template: "text" min-content "controls" min-content "output" 80%/auto;
   padding: 0 32px 0 32px;
   margin-bottom: 8em;
   margin-top: 8em;
-  width: 100%;
 }
 
 .viewport {
@@ -59,26 +59,19 @@ h3 {
   display: grid;
   grid-template-columns: max-content repeat(4, minmax(30px, auto));
   grid-template-rows: repeat(4, auto);
-  width: max-content;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
-video,
-canvas {
-  height: minmax(100%, auto);
-  width: 100%;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .Typewriter {
   font-size: 10px;
+  padding-right: -16px;
   line-height: normal;
-  max-width: inherit;
-  overflow: scroll;
-  white-space: pre;
+  max-width: 100%;
+  overflow-x: scroll;
+  white-space: normal;
 }
 
 /*# sourceMappingURL=/wormhole-dwf2019/dist/styles.164d45a1.css.map */

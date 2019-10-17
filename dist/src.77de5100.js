@@ -32597,7 +32597,10 @@ var Controls = function (_super) {
     var _this = this;
 
     return _react.default.createElement("div", {
-      className: 'sidebar'
+      className: 'sidebar',
+      style: {
+        maxHeight: window.innerHeight - 100
+      }
     }, _react.default.createElement("div", null, _react.default.createElement("h3", null, "Wormhole Interaction Interface"), _react.default.createElement("p", null, "The interface is controlled through the keyboard or the following buttons")), _react.default.createElement("div", {
       className: 'button-con'
     }, _react.default.createElement("div", null), _react.default.createElement("div", null, "--"), _react.default.createElement("div", null, "-"), _react.default.createElement("div", null, "+"), _react.default.createElement("div", null, "++"), _react.default.createElement("div", null, "azimoth"), _react.default.createElement(_keyButton.default, {
@@ -32665,10 +32668,7 @@ var Controls = function (_super) {
     }, _react.default.createElement("h4", null, "Output"), _react.default.createElement("div", {
       style: {
         overflowY: 'scroll',
-        scrollbarWidth: '8px',
-        maxHeight: '500px',
-        width: '100%',
-        overflowX: 'hidden'
+        maxHeight: 'auto'
       }
     }, _react.default.createElement(_typewriterEffect.default, {
       options: {
@@ -32687,7 +32687,7 @@ var Controls = function (_super) {
 
 var _default = Controls;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./keyButton":"reactModules/keyButton.tsx","typewriter-effect":"../node_modules/typewriter-effect/dist/react.js","../writing":"writing.ts"}],"reactModules/Viewport.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./keyButton":"reactModules/keyButton.tsx","typewriter-effect":"../node_modules/typewriter-effect/dist/react.js","../writing":"writing.ts"}],"reactModules/Visuals.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32727,6 +32727,123 @@ var __extends = void 0 && (void 0).__extends || function () {
   };
 }();
 
+var Visuals = function (_super) {
+  __extends(Visuals, _super);
+
+  function Visuals() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.state = {
+      dimms: undefined
+    };
+    _this.videoRef = _react.default.createRef();
+    return _this;
+  }
+
+  Visuals.prototype.componentDidMount = function () {
+    var width = this.container.getBoundingClientRect().width;
+    var newHeight = 0.75 * width;
+    this.setState({
+      dimms: {
+        width: width,
+        height: newHeight
+      }
+    });
+  };
+
+  Visuals.prototype.renderContent = function () {
+    var wid = Math.floor(this.state.dimms.width);
+    var hei = Math.floor(this.state.dimms.height);
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("video", {
+      ref: this.videoRef,
+      width: wid,
+      height: hei,
+      loop: true,
+      muted: true,
+      autoPlay: true,
+      src: this.context.videoURL
+    }), _react.default.createElement("canvas", {
+      style: {
+        position: 'relative',
+        left: '0px',
+        top: "-" + hei + "px"
+      },
+      id: 'gl',
+      width: wid,
+      height: hei
+    }), _react.default.createElement("canvas", {
+      hidden: true,
+      id: 'text',
+      width: wid,
+      height: hei
+    }));
+  };
+
+  Visuals.prototype.render = function () {
+    var _this = this;
+
+    return _react.default.createElement("div", {
+      ref: function (e) {
+        return _this.container = e;
+      },
+      style: {
+        width: '100%',
+        marginTop: 'auto',
+        marginBottom: 'auto'
+      }
+    }, this.state.dimms && this.renderContent());
+  };
+
+  Visuals.contextType = _contContext.controllerContext;
+  return Visuals;
+}(_react.Component);
+
+var _default = Visuals;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./contContext":"reactModules/contContext.ts"}],"reactModules/Viewport.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _contContext = require("./contContext");
+
+var _Visuals = _interopRequireDefault(require("./Visuals"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
+
+    return extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
 var Viewport = function (_super) {
   __extends(Viewport, _super);
 
@@ -32734,29 +32851,23 @@ var Viewport = function (_super) {
     var _this = _super !== null && _super.apply(this, arguments) || this;
 
     _this.state = {};
+    _this.viewRef = _react.default.createRef();
     _this.videoRef = _react.default.createRef();
     _this.audioRef = _react.default.createRef();
     return _this;
   }
 
+  Viewport.prototype.componentDidMount = function () {};
+
   Viewport.prototype.render = function () {
     return _react.default.createElement("div", {
+      ref: this.viewRef,
       className: 'viewport',
       style: {
         height: window.innerHeight
       }
-    }, _react.default.createElement("video", {
-      ref: this.videoRef,
-      loop: true,
-      hidden: true,
-      muted: true,
-      autoPlay: true,
-      src: this.context.videoURL
-    }), _react.default.createElement("canvas", {
-      id: 'gl'
-    }), _react.default.createElement("canvas", {
-      hidden: true,
-      id: 'text'
+    }, _react.default.createElement(_Visuals.default, {
+      parentRef: this.viewRef
     }), _react.default.createElement("audio", {
       ref: this.audioRef,
       loop: true,
@@ -32771,7 +32882,7 @@ var Viewport = function (_super) {
 
 var _default = Viewport;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./contContext":"reactModules/contContext.ts"}],"reactModules/MainScreen.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./contContext":"reactModules/contContext.ts","./Visuals":"reactModules/Visuals.tsx"}],"reactModules/MainScreen.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
