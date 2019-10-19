@@ -29,6 +29,7 @@ export default class Visuals extends Component<Props, State> {
     if (this.state.dimms && !this.hasAttCanv) {
       this.context.attachGLcanvas(this.glRef.current!);
       this.context.attachTextCanvas(this.canvRef.current!);
+      this.context.attachVideoCanvas(this.videoRef.current!);
       this.hasAttCanv = !this.hasAttCanv;
     }
   }
@@ -55,6 +56,7 @@ export default class Visuals extends Component<Props, State> {
         ></canvas>
         <canvas
           id='text'
+          hidden
           style={{ position: 'relative', left: '0px', top: `-${2 * hei}px` }}
           width={wid}
           height={hei}
