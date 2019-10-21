@@ -10,7 +10,7 @@ export default class Controls extends Component<Props, State> {
 
   render() {
     return (
-      <div className='sidebar'>
+      <div className='sidebar' style={{ maxHeight: window.innerHeight - 100 }}>
         <div>
           <h3>Wormhole Interaction Interface</h3>
           <p>
@@ -66,15 +66,7 @@ export default class Controls extends Component<Props, State> {
         </div>
         <div className='output-text'>
           <h4>Output</h4>
-          <div
-            style={{
-              overflowY: 'scroll',
-              scrollbarWidth: '8px',
-              maxHeight: '500px',
-              width: '100%',
-              overflowX: 'hidden',
-            }}
-          >
+          <div style={{ overflowY: 'scroll', maxHeight: 'auto' }}>
             <Typewriter
               options={{
                 strings: text,

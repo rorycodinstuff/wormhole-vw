@@ -1,7 +1,9 @@
 precision highp float;
 
+uniform sampler2D id;
 uniform sampler2D vid;
-
+uniform sampler2D u_vidFrames[10];
+uniform vec2 u_resolution;
 varying vec2 uv;
 
 const vec4 RED=vec4(1.,0.,0.,1.);
@@ -92,7 +94,39 @@ vec2 flipY(vec2 inpos){
 void main(){
   
   vec2 correct_uv=flipY(uv);
+  vec2 otherPosition=cell_closestSeed(texture2D(id,correct_uv));
+  float dist=sqrt(sqDist(correct_uv*u_resolution,otherPosition));
+  // vec2 offset=(correct_uv*u_resolution)-otherPosition;
+  // float angle=asin(offset.y/dist);
+  // vec2 newPoint=vec2(cos(angle)*dist,sin(angle)*dist);
+  // vec2 newV=(otherPosition+newPoint)/u_resolution;
+  // vec2 otherUv=otherPosition/u_resolution;
+  // float invertedx=mod(.5+correct_uv.x,1.);
+  float id=floor(dist/30.);
+  vec4 timeTex=texture2D(u_vidFrames[9],correct_uv);
+  if(id==0.){
+    timeTex=texture2D(u_vidFrames[0],correct_uv);
+  }else if(id==1.){
+    timeTex=texture2D(u_vidFrames[1],correct_uv);
+  }else if(id==2.){
+    timeTex=texture2D(u_vidFrames[2],correct_uv);
+  }else if(id==3.){
+    timeTex=texture2D(u_vidFrames[3],correct_uv);
+  }else if(id==4.){
+    timeTex=texture2D(u_vidFrames[4],correct_uv);
+  }else if(id==5.){
+    timeTex=texture2D(u_vidFrames[5],correct_uv);
+  }else if(id==6.){
+    timeTex=texture2D(u_vidFrames[6],correct_uv);
+  }else if(id==7.){
+    timeTex=texture2D(u_vidFrames[7],correct_uv);
+  }else if(id==8.){
+    timeTex=texture2D(u_vidFrames[8],correct_uv);
+  }else if(id==9.){
+    timeTex=texture2D(u_vidFrames[9],correct_uv);
+  }
+  
   // if(mod(id,2.)<.01)timeTex=vec4(vec3(1.),0.)-timeTex;
-  gl_FragColor=texture2D(vid,correct_uv);
+  gl_FragColor=vec4(timeTex.rgb,1.);
   // gl_FragColor=vec4(correct_uv,1.,1.);
 }

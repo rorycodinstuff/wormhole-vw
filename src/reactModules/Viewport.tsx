@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { controllerContext } from './contContext';
+import Visuals from './Visuals';
 interface Props {}
 interface State {}
 
 export default class Viewport extends Component<Props, State> {
   state = {};
+  viewRef = React.createRef<HTMLDivElement>();
   static contextType = controllerContext;
   context!: React.ContextType<typeof controllerContext>;
   videoRef = React.createRef<HTMLVideoElement>();
@@ -12,17 +14,12 @@ export default class Viewport extends Component<Props, State> {
   componentDidMount() {}
   render() {
     return (
-      <div className='viewport' style={{ height: window.innerHeight }}>
-        <video
-          ref={this.videoRef}
-          loop
-          hidden
-          muted
-          autoPlay
-          src={this.context.videoURL}
-        ></video>
-        <canvas id='gl'></canvas>
-        <canvas hidden id='text'></canvas>
+      <div
+        ref={this.viewRef}
+        className='viewport'
+        style={{ height: window.innerHeight }}
+      >
+        <Visuals parentRef={this.viewRef} />
         <audio
           ref={this.audioRef}
           loop
