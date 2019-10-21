@@ -4,6 +4,7 @@ import jfaFrag from './jfa.frag';
 import prepare from './prepare.frag';
 import keyFrag from './keyFill.frag';
 import identity from './identity.frag';
+import tWarp from './timeWarp.frag';
 type n = number;
 type Tex = regl.Texture;
 type fb = regl.Framebuffer2D;
@@ -28,9 +29,10 @@ export interface fillProps {
   fb: regl.Framebuffer2D;
 }
 interface idProps {
-  resolution?: [n, n];
+  resolution: [n, n];
   id: regl.Texture2D | regl.Framebuffer2D;
   vid: regl.Texture2D | regl.Framebuffer2D;
+  vidFrames: regl.Texture2D[];
 }
 export class Jfaclass {
   gl: regl.Regl;
@@ -38,6 +40,9 @@ export class Jfaclass {
   hei: number;
   _inputTexture: regl.Texture2D;
   _videoTexture: regl.Texture2D;
+  setupCanvas: CanvasRenderingContext2D;
+  videoTextures: regl.Texture2D[];
+  warpFunc: regl.DrawCommand<regl.DefaultContext, idProps>;
   idFunc: regl.DrawCommand<regl.DefaultContext, idProps>;
   jfaFunction: regl.DrawCommand<regl.DefaultContext, jfaProps>;
   prepFunction: regl.DrawCommand<regl.DefaultContext, prepProps>;
@@ -62,12 +67,25 @@ export class Jfaclass {
       height,
       wrap: 'clamp',
     });
+
+    const canv = document.createElement('canvas');
+    canv.width = this.wid;
+    canv.height = this.hei;
+    this.setupCanvas = canv.getContext('2d')!;
     this._videoTexture = gl.texture({
       data: input,
       width,
       height,
       wrap: 'clamp',
     });
+    this.videoTextures = new Array(10).fill(
+      gl.texture({
+        data: input,
+        width,
+        height,
+        wrap: 'clamp',
+      })
+    );
     const StartData = Array(width * height * 4).fill(0);
     this.out = gl.framebuffer({
       width: width,
@@ -147,13 +165,27 @@ export class Jfaclass {
         u_resolution: (c, p) => p.resolution,
       },
     });
-    this.idFunc = gl({
-      frag: identity,
+    const vidsuniforms: { [s: string]: Function } = {};
+    this.videoTextures.map((t, i) => {
+      vidsuniforms[`u_vidFrames[${i}]`] = (c: any, p: idProps) =>
+        p.vidFrames[i];
+    });
+    this.warpFunc = gl({
+      frag: tWarp,
       framebuffer: null,
       uniforms: {
         id: (c, p: any) => p.id,
         u_resolution: [this.wid, this.hei],
         vid: (c, p: idProps) => p.vid,
+        ...vidsuniforms,
+      },
+    });
+    this.idFunc = gl({
+      frag: identity,
+      framebuffer: null,
+      uniforms: {
+        vid: (c, p: idProps) => p.vid,
+        ...vidsuniforms,
       },
     });
   }
@@ -163,6 +195,27 @@ export class Jfaclass {
   set videoTexture(inP: regl.TextureImageData | regl.Texture2DOptions) {
     this._videoTexture(inP as regl.TextureImageData);
   }
+  updateVideoTextures = (inP: regl.TextureImageData) => {
+    const videoTag: HTMLVideoElement = inP as HTMLVideoElement;
+    const newTex = this.videoTextures.pop()!;
+    this.setupCanvas.clearRect(0, 0, this.wid, this.hei);
+    this.setupCanvas.drawImage(videoTag, 0, 0, this.wid, this.hei);
+    const tex = this.gl.texture({
+      width: this.wid,
+      height: this.hei,
+      data: this.setupCanvas,
+      flipY: true,
+    });
+    this.setupFunc(() => {
+      this.idFunc({ vid: tex });
+    });
+    newTex({
+      width: this.wid,
+      height: this.hei,
+      copy: true,
+    });
+    this.videoTextures.unshift(newTex);
+  };
   runJFA() {
     const { max: mx, floor: fl } = Math;
     const radius = mx(this.wid, this.hei);
@@ -193,7 +246,11 @@ export class Jfaclass {
       );
     }
     this.setupFunc(() =>
-      this.idFunc({ id: this.back, vid: this._videoTexture })
+      this.warpFunc({
+        id: this.back,
+        vid: this._videoTexture,
+        vidFrames: this.videoTextures,
+      })
     );
     return fbAccess[(totalSteps - 1) % 2];
   }

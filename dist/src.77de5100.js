@@ -32128,7 +32128,9 @@ module.exports = "precision highp float;\n#define GLSLIFY 1\n\nuniform sampler2D
 },{}],"jfaFiles/keyFill.frag":[function(require,module,exports) {
 module.exports = "precision highp float;\n#define GLSLIFY 1\n\nuniform sampler2D input_points;\nuniform sampler2D input_key;\nvarying vec2 uv;\nuniform vec2 u_resolution;\n\nvec4 posToCol(vec2 pos){\n  vec4 outp=vec4(1.);\n  outp.r=floor(pos.x/255.);\n  outp.g=mod(pos.x,256.);\n  outp.b=floor(pos.y/255.);\n  outp.a=mod(pos.y,256.);\n  return outp/255.;\n}\nvec2 colToPos(vec4 color){\n  vec4 inp=floor(255.*color);\n  vec2 outp=vec2(1.);\n  outp.x=(inp.r*255.)+inp.g;\n  outp.y=(inp.b*255.)+inp.a;\n  return outp;\n}\nvec2 flipY(vec2 inpos){\n  return vec2(inpos.x,1.-inpos.y);\n}\nfloat sstep(float low,float high,float t)\n{\n  t=clamp((t-low)/(high-low),0.,1.);\n  return t*t*(3.-2.*t);\n}\nvoid main(){\n  vec2 correct_uv=vec2(\n    gl_FragCoord.x/u_resolution.x,\n    (u_resolution.y-gl_FragCoord.y)/u_resolution.y\n  );\n  vec2 this_pos=correct_uv*u_resolution;\n  vec4 pre_point=texture2D(input_points,flipY(correct_uv));\n  vec2 key_pos=colToPos(pre_point);\n  float col=sstep(0.,1.,length(key_pos-this_pos)/5.);\n  gl_FragColor=vec4(vec3(col),1.);\n  // gl_FragColor=pre_point;\n}\n";
 },{}],"jfaFiles/identity.frag":[function(require,module,exports) {
-module.exports = "precision highp float;\n#define GLSLIFY 1\n\nuniform sampler2D id;\nuniform sampler2D vid;\nuniform vec2 u_resolution;\nvarying vec2 uv;\n\nconst vec4 RED=vec4(1.,0.,0.,1.);\nconst vec4 GREEN=vec4(0.,1.,0.,1.);\nconst vec4 BLUE=vec4(0.,0.,1.,1.);\nconst vec4 BLACK=vec4(0.,0.,0.,1.);\nconst vec4 WHITE=vec4(1.,1.,1.,1.);\n\n// 0.005 * 255 is roughly 1.2, so this will match colors\n// one digit away from each other.\nconst float EPSILON=.005;\n\n// Return true if `a` and `b` are at most EPSILON apart\n// in any dimension\nbool approxEqual(const vec4 a,const vec4 b){\n  return all(\n    lessThan(abs(a-b),vec4(EPSILON))\n  );\n}\n\nbool approxEqual(const vec2 a,const vec2 b){\n  return all(\n    lessThan(abs(a-b),vec2(EPSILON))\n  );\n}\n\nbool between(const vec2 value,const vec2 bottom,const vec2 top){\n  return(\n    all(greaterThan(value,bottom))&&\n    all(lessThan(value,top))\n  );\n}\nfloat sqDist(vec2 a,vec2 b){\n  return abs(pow((a.x-b.x),2.)+pow((a.y-b.y),2.));\n}\nbool validUv(const vec2 uv){\n  return between(\n    uv,\n    vec2(0.,0.),\n    vec2(1.,1.)\n  );\n}\n\n// Split a float into two base-255 encoded floats. Useful for storing\n// a screen co-ordinate as the rg part or ba part of a pixel.\n//\n// This can be passed fractional values. If it's passed (300.5, 300.5)\n// then it will return\n//\n//     vec2(floor(300.5 / 255.), mod(300.5, 255.))\n//\n// which is vec2(1.0, 45.5). Then later, when decoding, we return\n//\n//     channels.x * 255. + channels.y\n//\n// which is 1.0 * 255. + 45.5 which is 300.5. The returned pair has\n// values in the interval [0.0, 255.0). This means that it can be\n// stored as a color value in an UNSIGNED_BYTE texture.\n//\nvec2 encodeScreenCoordinate(const float value_){\n  float value=value_;\n  return vec2(\n    floor(value/100.),\n    mod(value,100.)\n  );\n}\n\nfloat decodeScreenCoordinate(const vec2 channels){\n  return channels.x*100.+channels.y;\n}\nvec2 cell_closestSeed(const vec4 obj_){\n  vec4 obj=obj_*255.;\n  float x=decodeScreenCoordinate(obj.rg);\n  float y=decodeScreenCoordinate(obj.ba);\n  return vec2(x,y)+vec2(.5);\n}\nvec2 flipY(vec2 inpos){\n  return vec2(inpos.x,1.-inpos.y);\n}\nvoid main(){\n  \n  vec2 correct_uv=flipY(uv);\n  vec2 otherPosition=cell_closestSeed(texture2D(id,correct_uv));\n  float dist=clamp(sqrt(sqDist(correct_uv*u_resolution,otherPosition))/10.,.01,.99);\n  vec2 otherUv=otherPosition/u_resolution;\n  float invertedx=1.-correct_uv.x;\n  vec4 newCol=mix(vec4(vec3(1.)-texture2D(vid,vec2(invertedx-(dist/4.),otherUv.y)).rgb,1.),texture2D(vid,correct_uv),dist);\n  vec4 vidtex=newCol;\n  gl_FragColor=vec4(vidtex);\n  // gl_FragColor=vec4(correct_uv,1.,1.);\n}\n";
+module.exports = "precision highp float;\n#define GLSLIFY 1\n\nuniform sampler2D vid;\n\nvarying vec2 uv;\n\nconst vec4 RED=vec4(1.,0.,0.,1.);\nconst vec4 GREEN=vec4(0.,1.,0.,1.);\nconst vec4 BLUE=vec4(0.,0.,1.,1.);\nconst vec4 BLACK=vec4(0.,0.,0.,1.);\nconst vec4 WHITE=vec4(1.,1.,1.,1.);\n\n// 0.005 * 255 is roughly 1.2, so this will match colors\n// one digit away from each other.\nconst float EPSILON=.005;\n\n// Return true if `a` and `b` are at most EPSILON apart\n// in any dimension\nbool approxEqual(const vec4 a,const vec4 b){\n  return all(\n    lessThan(abs(a-b),vec4(EPSILON))\n  );\n}\n\nbool approxEqual(const vec2 a,const vec2 b){\n  return all(\n    lessThan(abs(a-b),vec2(EPSILON))\n  );\n}\n\nbool between(const vec2 value,const vec2 bottom,const vec2 top){\n  return(\n    all(greaterThan(value,bottom))&&\n    all(lessThan(value,top))\n  );\n}\nfloat sqDist(vec2 a,vec2 b){\n  return abs(pow((a.x-b.x),2.)+pow((a.y-b.y),2.));\n}\nbool validUv(const vec2 uv){\n  return between(\n    uv,\n    vec2(0.,0.),\n    vec2(1.,1.)\n  );\n}\n\n// Split a float into two base-255 encoded floats. Useful for storing\n// a screen co-ordinate as the rg part or ba part of a pixel.\n//\n// This can be passed fractional values. If it's passed (300.5, 300.5)\n// then it will return\n//\n//     vec2(floor(300.5 / 255.), mod(300.5, 255.))\n//\n// which is vec2(1.0, 45.5). Then later, when decoding, we return\n//\n//     channels.x * 255. + channels.y\n//\n// which is 1.0 * 255. + 45.5 which is 300.5. The returned pair has\n// values in the interval [0.0, 255.0). This means that it can be\n// stored as a color value in an UNSIGNED_BYTE texture.\n//\nvec2 encodeScreenCoordinate(const float value_){\n  float value=value_;\n  return vec2(\n    floor(value/100.),\n    mod(value,100.)\n  );\n}\nfloat map(float t,float m1,float M1,float m2,float M2,bool cl){\n  float T=(t-m1)/M1;\n  float result=(T*(M2-m2))+m2;\n  if(cl){\n    return clamp(result,m2,M2);\n  }else{\n    return result;\n  }\n}\nfloat decodeScreenCoordinate(const vec2 channels){\n  return channels.x*100.+channels.y;\n}\nvec2 cell_closestSeed(const vec4 obj_){\n  vec4 obj=obj_*255.;\n  float x=decodeScreenCoordinate(obj.rg);\n  float y=decodeScreenCoordinate(obj.ba);\n  return vec2(x,y)+vec2(.5);\n}\nvec2 flipY(vec2 inpos){\n  return vec2(inpos.x,1.-inpos.y);\n}\nvoid main(){\n  \n  vec2 correct_uv=flipY(uv);\n  // if(mod(id,2.)<.01)timeTex=vec4(vec3(1.),0.)-timeTex;\n  gl_FragColor=texture2D(vid,correct_uv);\n  // gl_FragColor=vec4(correct_uv,1.,1.);\n}\n";
+},{}],"jfaFiles/timeWarp.frag":[function(require,module,exports) {
+module.exports = "precision highp float;\n#define GLSLIFY 1\n\nuniform sampler2D id;\nuniform sampler2D vid;\nuniform sampler2D u_vidFrames[10];\nuniform vec2 u_resolution;\nvarying vec2 uv;\n\nconst vec4 RED=vec4(1.,0.,0.,1.);\nconst vec4 GREEN=vec4(0.,1.,0.,1.);\nconst vec4 BLUE=vec4(0.,0.,1.,1.);\nconst vec4 BLACK=vec4(0.,0.,0.,1.);\nconst vec4 WHITE=vec4(1.,1.,1.,1.);\n\n// 0.005 * 255 is roughly 1.2, so this will match colors\n// one digit away from each other.\nconst float EPSILON=.005;\n\n// Return true if `a` and `b` are at most EPSILON apart\n// in any dimension\nbool approxEqual(const vec4 a,const vec4 b){\n  return all(\n    lessThan(abs(a-b),vec4(EPSILON))\n  );\n}\n\nbool approxEqual(const vec2 a,const vec2 b){\n  return all(\n    lessThan(abs(a-b),vec2(EPSILON))\n  );\n}\n\nbool between(const vec2 value,const vec2 bottom,const vec2 top){\n  return(\n    all(greaterThan(value,bottom))&&\n    all(lessThan(value,top))\n  );\n}\nfloat sqDist(vec2 a,vec2 b){\n  return abs(pow((a.x-b.x),2.)+pow((a.y-b.y),2.));\n}\nbool validUv(const vec2 uv){\n  return between(\n    uv,\n    vec2(0.,0.),\n    vec2(1.,1.)\n  );\n}\n\n// Split a float into two base-255 encoded floats. Useful for storing\n// a screen co-ordinate as the rg part or ba part of a pixel.\n//\n// This can be passed fractional values. If it's passed (300.5, 300.5)\n// then it will return\n//\n//     vec2(floor(300.5 / 255.), mod(300.5, 255.))\n//\n// which is vec2(1.0, 45.5). Then later, when decoding, we return\n//\n//     channels.x * 255. + channels.y\n//\n// which is 1.0 * 255. + 45.5 which is 300.5. The returned pair has\n// values in the interval [0.0, 255.0). This means that it can be\n// stored as a color value in an UNSIGNED_BYTE texture.\n//\nvec2 encodeScreenCoordinate(const float value_){\n  float value=value_;\n  return vec2(\n    floor(value/100.),\n    mod(value,100.)\n  );\n}\nfloat map(float t,float m1,float M1,float m2,float M2,bool cl){\n  float T=(t-m1)/M1;\n  float result=(T*(M2-m2))+m2;\n  if(cl){\n    return clamp(result,m2,M2);\n  }else{\n    return result;\n  }\n}\nfloat decodeScreenCoordinate(const vec2 channels){\n  return channels.x*100.+channels.y;\n}\nvec2 cell_closestSeed(const vec4 obj_){\n  vec4 obj=obj_*255.;\n  float x=decodeScreenCoordinate(obj.rg);\n  float y=decodeScreenCoordinate(obj.ba);\n  return vec2(x,y)+vec2(.5);\n}\nvec2 flipY(vec2 inpos){\n  return vec2(inpos.x,1.-inpos.y);\n}\nvoid main(){\n  \n  vec2 correct_uv=flipY(uv);\n  vec2 otherPosition=cell_closestSeed(texture2D(id,correct_uv));\n  float dist=sqrt(sqDist(correct_uv*u_resolution,otherPosition));\n  // vec2 offset=(correct_uv*u_resolution)-otherPosition;\n  // float angle=asin(offset.y/dist);\n  // vec2 newPoint=vec2(cos(angle)*dist,sin(angle)*dist);\n  // vec2 newV=(otherPosition+newPoint)/u_resolution;\n  // vec2 otherUv=otherPosition/u_resolution;\n  // float invertedx=mod(.5+correct_uv.x,1.);\n  float id=floor(dist/30.);\n  vec4 timeTex=texture2D(u_vidFrames[9],correct_uv);\n  if(id==0.){\n    timeTex=texture2D(u_vidFrames[0],correct_uv);\n  }else if(id==1.){\n    timeTex=texture2D(u_vidFrames[1],correct_uv);\n  }else if(id==2.){\n    timeTex=texture2D(u_vidFrames[2],correct_uv);\n  }else if(id==3.){\n    timeTex=texture2D(u_vidFrames[3],correct_uv);\n  }else if(id==4.){\n    timeTex=texture2D(u_vidFrames[4],correct_uv);\n  }else if(id==5.){\n    timeTex=texture2D(u_vidFrames[5],correct_uv);\n  }else if(id==6.){\n    timeTex=texture2D(u_vidFrames[6],correct_uv);\n  }else if(id==7.){\n    timeTex=texture2D(u_vidFrames[7],correct_uv);\n  }else if(id==8.){\n    timeTex=texture2D(u_vidFrames[8],correct_uv);\n  }else if(id==9.){\n    timeTex=texture2D(u_vidFrames[9],correct_uv);\n  }\n  \n  // if(mod(id,2.)<.01)timeTex=vec4(vec3(1.),0.)-timeTex;\n  gl_FragColor=vec4(timeTex.rgb,1.);\n  // gl_FragColor=vec4(correct_uv,1.,1.);\n}\n";
 },{}],"jfaFiles/jfa.ts":[function(require,module,exports) {
 "use strict";
 
@@ -32145,10 +32147,59 @@ var _keyFill = _interopRequireDefault(require("./keyFill.frag"));
 
 var _identity = _interopRequireDefault(require("./identity.frag"));
 
+var _timeWarp = _interopRequireDefault(require("./timeWarp.frag"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __assign = void 0 && (void 0).__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+
+    return t;
+  };
+
+  return __assign.apply(this, arguments);
+};
 
 var Jfaclass = function () {
   function Jfaclass(reglInstance, width, height, input) {
+    var _this = this;
+
+    this.updateVideoTextures = function (inP) {
+      var videoTag = inP;
+
+      var newTex = _this.videoTextures.pop();
+
+      _this.setupCanvas.clearRect(0, 0, _this.wid, _this.hei);
+
+      _this.setupCanvas.drawImage(videoTag, 0, 0, _this.wid, _this.hei);
+
+      var tex = _this.gl.texture({
+        width: _this.wid,
+        height: _this.hei,
+        data: _this.setupCanvas,
+        flipY: true
+      });
+
+      _this.setupFunc(function () {
+        _this.idFunc({
+          vid: tex
+        });
+      });
+
+      newTex({
+        width: _this.wid,
+        height: _this.hei,
+        copy: true
+      });
+
+      _this.videoTextures.unshift(newTex);
+    };
+
     this.gl = reglInstance;
     var gl = this.gl;
     this.wid = width;
@@ -32159,12 +32210,22 @@ var Jfaclass = function () {
       height: height,
       wrap: 'clamp'
     });
+    var canv = document.createElement('canvas');
+    canv.width = this.wid;
+    canv.height = this.hei;
+    this.setupCanvas = canv.getContext('2d');
     this._videoTexture = gl.texture({
       data: input,
       width: width,
       height: height,
       wrap: 'clamp'
     });
+    this.videoTextures = new Array(10).fill(gl.texture({
+      data: input,
+      width: width,
+      height: height,
+      wrap: 'clamp'
+    }));
     var StartData = Array(width * height * 4).fill(0);
     this.out = gl.framebuffer({
       width: width,
@@ -32279,10 +32340,16 @@ var Jfaclass = function () {
         }
       }
     });
-    this.idFunc = gl({
-      frag: _identity.default,
+    var vidsuniforms = {};
+    this.videoTextures.map(function (t, i) {
+      vidsuniforms["u_vidFrames[" + i + "]"] = function (c, p) {
+        return p.vidFrames[i];
+      };
+    });
+    this.warpFunc = gl({
+      frag: _timeWarp.default,
       framebuffer: null,
-      uniforms: {
+      uniforms: __assign({
         id: function (c, p) {
           return p.id;
         },
@@ -32290,7 +32357,16 @@ var Jfaclass = function () {
         vid: function (c, p) {
           return p.vid;
         }
-      }
+      }, vidsuniforms)
+    });
+    this.idFunc = gl({
+      frag: _identity.default,
+      framebuffer: null,
+      uniforms: __assign({
+        vid: function (c, p) {
+          return p.vid;
+        }
+      }, vidsuniforms)
     });
   }
 
@@ -32348,9 +32424,10 @@ var Jfaclass = function () {
     }
 
     this.setupFunc(function () {
-      return _this.idFunc({
+      return _this.warpFunc({
         id: _this.back,
-        vid: _this._videoTexture
+        vid: _this._videoTexture,
+        vidFrames: _this.videoTextures
       });
     });
     return fbAccess[(totalSteps - 1) % 2];
@@ -32367,7 +32444,7 @@ var Jfaclass = function () {
 }();
 
 exports.Jfaclass = Jfaclass;
-},{"./jfa.frag":"jfaFiles/jfa.frag","./prepare.frag":"jfaFiles/prepare.frag","./keyFill.frag":"jfaFiles/keyFill.frag","./identity.frag":"jfaFiles/identity.frag"}],"../node_modules/regl/dist/regl.js":[function(require,module,exports) {
+},{"./jfa.frag":"jfaFiles/jfa.frag","./prepare.frag":"jfaFiles/prepare.frag","./keyFill.frag":"jfaFiles/keyFill.frag","./identity.frag":"jfaFiles/identity.frag","./timeWarp.frag":"jfaFiles/timeWarp.frag"}],"../node_modules/regl/dist/regl.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 (function (global, factory) {
@@ -42300,18 +42377,20 @@ var default_1 = function () {
     var _this = this;
 
     this.videoEl = canvas;
+    canvas.currentTime = 3;
     var ot = this.jfa.runJFA();
     window.setTimeout(function () {
       var render = function () {
         if (!_this.textCanvas) return;
         _this.elapsed = Date.now() - _this.startTime;
+        if (_this.elapsed % 100 < 10) _this.jfa.updateVideoTextures(canvas);
 
         _this.textCanvas.clearRect(0, 0, _this.width, _this.height);
 
         _this.textCanvas.save();
 
-        _this.textCanvas.font = '142px VT323';
-        _this.textCanvas.strokeStyle = 'white';
+        _this.textCanvas.font = '64px VT323';
+        _this.textCanvas.fillStyle = 'white';
 
         _this.textCanvas.translate(0, -1000 + Math.sin(_this.elapsed / 10000) * 1200);
 
@@ -42320,7 +42399,7 @@ var default_1 = function () {
         for (var i = 0; i < _linesForRender.default.length; i++) {
           var y = 20 + i * 102;
 
-          _this.textCanvas.strokeText(_linesForRender.default[i], 5, y);
+          _this.textCanvas.fillText(_linesForRender.default[i], 5, y);
         }
 
         _this.textCanvas.restore();

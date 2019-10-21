@@ -63,16 +63,18 @@ export default class {
   }
   attachVideoCanvas(canvas: HTMLVideoElement) {
     this.videoEl = canvas;
+    canvas.currentTime = 3;
     const ot = this.jfa!.runJFA();
     window.setTimeout(() => {
       let render = () => {
         if (!this.textCanvas) return;
         this.elapsed = Date.now() - this.startTime;
+        if (this.elapsed % 100 < 10) this.jfa!.updateVideoTextures(canvas);
         this.textCanvas.clearRect(0, 0, this.width, this.height);
         this.textCanvas.save();
 
-        this.textCanvas.font = '142px VT323';
-        this.textCanvas.strokeStyle = 'white';
+        this.textCanvas.font = '64px VT323';
+        this.textCanvas.fillStyle = 'white';
         this.textCanvas.translate(
           0,
           -1000 + Math.sin(this.elapsed / 10000) * 1200
@@ -80,7 +82,7 @@ export default class {
         this.textCanvas.scale(0.7, 0.7);
         for (let i = 0; i < lines.length; i++) {
           let y = 20 + i * 102;
-          this.textCanvas.strokeText(lines[i], 5, y);
+          this.textCanvas.fillText(lines[i], 5, y);
         }
 
         this.textCanvas.restore();
