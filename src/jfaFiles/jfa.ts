@@ -206,9 +206,7 @@ export class Jfaclass {
       data: this.setupCanvas,
       flipY: true,
     });
-    this.setupFunc(() => {
-      this.idFunc({ vid: tex });
-    });
+    this.setupFunc(() => {});
     newTex({
       width: this.wid,
       height: this.hei,
