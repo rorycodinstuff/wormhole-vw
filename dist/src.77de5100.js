@@ -32185,11 +32185,7 @@ var Jfaclass = function () {
         flipY: true
       });
 
-      _this.setupFunc(function () {
-        _this.idFunc({
-          vid: tex
-        });
-      });
+      _this.setupFunc(function () {});
 
       newTex({
         width: _this.wid,
@@ -42286,8 +42282,8 @@ var __generator = void 0 && (void 0).__generator || function (thisArg, body) {
   }
 };
 
-var default_1 = function () {
-  function default_1() {
+var Controller = function () {
+  function Controller() {
     var _this = this;
 
     this.width = 100;
@@ -42297,7 +42293,11 @@ var default_1 = function () {
     this.z = 0;
     this.startTime = 0;
     this.elapsed = 0;
+    this.azi = 0;
+    this.alt = 0;
+    this.warp = 0;
     this.loadingHandlers = new Set();
+    this.positionHandlers = new Set();
 
     this.addReadyFunction = function (func) {
       _this.loadingHandlers.add(func);
@@ -42306,9 +42306,17 @@ var default_1 = function () {
     this.removeReadyFunction = function (func) {
       _this.loadingHandlers.delete(func);
     };
+
+    this.attachPositionHandler = function (func) {
+      _this.positionHandlers.add(func);
+    };
+
+    this.removePositoinHandler = function (func) {
+      _this.positionHandlers.delete(func);
+    };
   }
 
-  default_1.prototype.fetchFiles = function () {
+  Controller.prototype.fetchFiles = function () {
     return __awaiter(this, void 0, void 0, function () {
       var audioResp, videoResp, _a, _b;
 
@@ -42344,7 +42352,16 @@ var default_1 = function () {
     });
   };
 
-  default_1.prototype.attachGLcanvas = function (canvas) {
+  Controller.prototype.setPos = function (args) {
+    this.x = args.x;
+    this.y = args.y;
+    this.z = args.z;
+    this.positionHandlers.forEach(function (f) {
+      return f();
+    });
+  };
+
+  Controller.prototype.attachGLcanvas = function (canvas) {
     var _a = canvas.getBoundingClientRect(),
         width = _a.width,
         height = _a.height;
@@ -42364,7 +42381,7 @@ var default_1 = function () {
     this.startTime = Date.now();
   };
 
-  default_1.prototype.attachTextCanvas = function (canvas) {
+  Controller.prototype.attachTextCanvas = function (canvas) {
     this.textCanvas = canvas.getContext('2d');
     this.textCanvas.font = '32px VT323';
     this.textCanvas.strokeStyle = 'white';
@@ -42373,7 +42390,7 @@ var default_1 = function () {
     this.jfa.getFilled(ot);
   };
 
-  default_1.prototype.attachVideoCanvas = function (canvas) {
+  Controller.prototype.attachVideoCanvas = function (canvas) {
     var _this = this;
 
     this.videoEl = canvas;
@@ -42417,10 +42434,10 @@ var default_1 = function () {
     }, 500);
   };
 
-  return default_1;
+  return Controller;
 }();
 
-var _default = default_1;
+var _default = Controller;
 exports.default = _default;
 },{"../jfaFiles/jfa":"jfaFiles/jfa.ts","regl":"../node_modules/regl/dist/regl.js","../linesForRender":"linesForRender.ts"}],"reactModules/contContext.ts":[function(require,module,exports) {
 "use strict";
@@ -42630,7 +42647,73 @@ var stuff = "This is how time works&nbsp;&nbsp;&nbsp;we see&nbsp;&nbsp;&nbsp;&nb
 exports.stuff = stuff;
 var _default = stuff;
 exports.default = _default;
-},{}],"reactModules/Controls.tsx":[function(require,module,exports) {
+},{}],"reactModules/polarPos.tsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var __extends = void 0 && (void 0).__extends || function () {
+  var extendStatics = function (d, b) {
+    extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    };
+
+    return extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+var polarPos = function (_super) {
+  __extends(polarPos, _super);
+
+  function polarPos() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.state = {
+      azi: 0.8,
+      alt: 0.7,
+      war: 0.6
+    };
+    return _this;
+  }
+
+  polarPos.prototype.render = function () {
+    var _a = this.state,
+        alt = _a.alt,
+        azi = _a.azi,
+        war = _a.war;
+    var fl = Math.floor;
+    return _react.default.createElement("div", null, _react.default.createElement("pre", null, "Azimoth:      ", fl(azi * 100).toString(16).toUpperCase()), _react.default.createElement("pre", null, "Altitude:     ", fl(alt * 100).toString(16).toUpperCase()), _react.default.createElement("pre", null, "Warp:         ", fl(war * 100).toString(16).toUpperCase()));
+  };
+
+  return polarPos;
+}(_react.Component);
+
+var _default = polarPos;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"reactModules/Controls.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42645,6 +42728,8 @@ var _keyButton = _interopRequireDefault(require("./keyButton"));
 var _typewriterEffect = _interopRequireDefault(require("typewriter-effect"));
 
 var _writing = _interopRequireDefault(require("../writing"));
+
+var _polarPos = _interopRequireDefault(require("./polarPos"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42758,7 +42843,7 @@ var Controls = function (_super) {
       }
     }, "V")), _react.default.createElement("div", {
       className: 'output-text'
-    }, _react.default.createElement("h4", null, "Output"), _react.default.createElement("div", {
+    }, _react.default.createElement("h4", null, "Output"), _react.default.createElement(_polarPos.default, null), _react.default.createElement("div", {
       style: {
         overflowY: 'scroll',
         maxHeight: 'auto'
@@ -42780,7 +42865,7 @@ var Controls = function (_super) {
 
 var _default = Controls;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./keyButton":"reactModules/keyButton.tsx","typewriter-effect":"../node_modules/typewriter-effect/dist/react.js","../writing":"writing.ts"}],"reactModules/Visuals.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./keyButton":"reactModules/keyButton.tsx","typewriter-effect":"../node_modules/typewriter-effect/dist/react.js","../writing":"writing.ts","./polarPos":"reactModules/polarPos.tsx"}],"reactModules/Visuals.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43188,4 +43273,4 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _app.default)();
 },{"./app":"app.tsx"}]},{},["index.ts"], null)
-//# sourceMappingURL=/wormhole-dwf2019/dist/src.77de5100.js.map
+//# sourceMappingURL=/src.77de5100.js.map

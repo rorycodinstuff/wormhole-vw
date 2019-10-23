@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import B from './keyButton';
 import Typewriter from 'typewriter-effect';
 import text from '../writing';
+import Pos from './polarPos';
 interface Props {}
 interface State {}
 
@@ -66,6 +67,7 @@ export default class Controls extends Component<Props, State> {
         </div>
         <div className='output-text'>
           <h4>Output</h4>
+          <Pos />
           <div style={{ overflowY: 'scroll', maxHeight: 'auto' }}>
             <Typewriter
               options={{

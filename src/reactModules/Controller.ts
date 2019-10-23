@@ -2,7 +2,7 @@ import { Jfaclass } from '../jfaFiles/jfa';
 import REGL, { Regl } from 'regl';
 import lines from '../linesForRender';
 
-export default class {
+export default class Controller {
   videoURL?: string;
   audioURL?: string;
   audio?: Blob;
@@ -15,11 +15,16 @@ export default class {
   jfa?: Jfaclass;
   startTime: number = 0;
   elapsed: number = 0;
+  azi = 0;
+  alt = 0;
+  warp = 0;
+
   // audioSource;
   glContext?: Regl;
   textCanvas?: CanvasRenderingContext2D;
   videoEl?: HTMLVideoElement;
   loadingHandlers: Set<Function> = new Set();
+  positionHandlers: Set<Function> = new Set();
   async fetchFiles() {
     const audioResp = await window.fetch(
       'https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/RubySolly-Hurihuri.mp3'
@@ -39,6 +44,18 @@ export default class {
   removeReadyFunction = (func: Function) => {
     this.loadingHandlers.delete(func);
   };
+  attachPositionHandler = (func: Function) => {
+    this.positionHandlers.add(func);
+  };
+  removePositoinHandler = (func: Function) => {
+    this.positionHandlers.delete(func);
+  };
+  setPos(args: { x: number; y: number; z: number }) {
+    this.x = args.x;
+    this.y = args.y;
+    this.z = args.z;
+    this.positionHandlers.forEach(f => f());
+  }
   attachGLcanvas(canvas: HTMLCanvasElement) {
     const { width, height } = canvas.getBoundingClientRect();
     this.width = width;
