@@ -243,13 +243,7 @@ export class Jfaclass {
         })
       );
     }
-    this.setupFunc(() =>
-      this.warpFunc({
-        id: this.back,
-        vid: this._videoTexture,
-        vidFrames: this.videoTextures,
-      })
-    );
+    this.setupFunc(() => this.idFunc({ vid: this.front }));
     return fbAccess[(totalSteps - 1) % 2];
   }
   getFilled(inputFB: regl.Texture2D | regl.Framebuffer2D) {

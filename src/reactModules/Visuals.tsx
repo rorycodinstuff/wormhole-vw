@@ -44,9 +44,12 @@ export default class Visuals extends Component<Props, State> {
           height={hei}
           loop
           muted
+          style={{ display: 'hidden' }}
           autoPlay
           src={this.context.videoURL}
-        ></video>
+        >
+          <source />
+        </video>
         <canvas
           style={{ position: 'relative', left: '0px', top: `-${hei}px` }}
           id='gl'

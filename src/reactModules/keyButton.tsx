@@ -2,14 +2,14 @@ import React, { Component, Children } from 'react';
 
 interface Props {
   func: VoidFunction;
-  key: string;
+  keyPresssed: string;
 }
 interface State {}
 
 export default class keyButton extends Component<Props, State> {
   state = {};
   onKeyPress = (e: KeyboardEvent) => {
-    const { key, func } = this.props;
+    const { keyPresssed: key, func } = this.props;
     if (e.key === key) func();
   };
   componentDidMount = () => {

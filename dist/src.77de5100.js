@@ -32420,10 +32420,8 @@ var Jfaclass = function () {
     }
 
     this.setupFunc(function () {
-      return _this.warpFunc({
-        id: _this.back,
-        vid: _this._videoTexture,
-        vidFrames: _this.videoTextures
+      return _this.idFunc({
+        vid: _this.front
       });
     });
     return fbAccess[(totalSteps - 1) % 2];
@@ -42295,7 +42293,8 @@ var Controller = function () {
     this.elapsed = 0;
     this.azi = 0;
     this.alt = 0;
-    this.warp = 0;
+    this.tone = 0;
+    this.len = 0;
     this.loadingHandlers = new Set();
     this.positionHandlers = new Set();
 
@@ -42313,6 +42312,12 @@ var Controller = function () {
 
     this.removePositoinHandler = function (func) {
       _this.positionHandlers.delete(func);
+    };
+
+    this.updateLen = function () {
+      _this.len = 0.5 + 0.5 * Math.sin(0.00001 * _this.elapsed / (0.99 * _this.tone + 0.01));
+
+      _this.updatePosition();
     };
   }
 
@@ -42390,12 +42395,53 @@ var Controller = function () {
     this.jfa.getFilled(ot);
   };
 
+  Controller.prototype.updateVectors = function (vec, amt) {
+    switch (amt) {
+      case '--':
+        this[vec] -= 1 / 16;
+        break;
+
+      case '-':
+        this[vec] -= 1 / 256;
+        break;
+
+      case '+':
+        this[vec] += 1 / 256;
+        break;
+
+      case '++':
+        this[vec] += 1 / 16;
+        break;
+    }
+
+    if (this[vec] < 0) {
+      this[vec] = 0;
+    } else if (this[vec] > 1) {
+      this[vec] = 1;
+    }
+
+    this.updatePosition();
+  };
+
+  Controller.prototype.updatePosition = function () {
+    var TAU = Math.PI * 2;
+    var x = Math.cos(TAU * this.azi) * this.len;
+    var z = Math.sin(TAU * this.azi) * this.len;
+    var y = Math.sin(-0.5 * Math.PI + this.alt * Math.PI) * this.len;
+    this.setPos({
+      x: x,
+      y: y,
+      z: z
+    });
+  };
+
   Controller.prototype.attachVideoCanvas = function (canvas) {
     var _this = this;
 
     this.videoEl = canvas;
     canvas.currentTime = 3;
     var ot = this.jfa.runJFA();
+    var self = this;
     window.setTimeout(function () {
       var render = function () {
         if (!_this.textCanvas) return;
@@ -42427,11 +42473,20 @@ var Controller = function () {
 
         var v = _this.jfa.runJFA();
 
+        self.updateLen();
         window.requestAnimationFrame(render);
       };
 
       requestAnimationFrame(render);
     }, 500);
+
+    var updatePos = function () {
+      _this.updateLen();
+
+      window.requestAnimationFrame(updatePos);
+    };
+
+    window.requestAnimationFrame(updatePos);
   };
 
   return Controller;
@@ -42542,7 +42597,7 @@ var LoadingScreen = function (_super) {
       style: {
         textAlign: 'center'
       }
-    }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist will independently respond to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, "This piece has an audio component and uses webGL which requires a recent computer, it is also optemised for a 16:10 aspect ratio screen"), _react.default.createElement("p", null, this.state.text), this.state.hasLoaded ? _react.default.createElement(_ReadyButton.default, {
+    }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist will independently respond to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, "This piece has an audio component and uses webGL which requires a recent computer, and a browser that can stream webm video (firefox or chrome) it is also optemised for a 16:10 aspect ratio screen"), _react.default.createElement("p", null, this.state.text), this.state.hasLoaded ? _react.default.createElement(_ReadyButton.default, {
       onPress: this.props.passThroughFunc
     }) : _react.default.createElement(_LoadingText.default, null)));
   };
@@ -42601,7 +42656,7 @@ var keyButton = function (_super) {
 
     _this.onKeyPress = function (e) {
       var _a = _this.props,
-          key = _a.key,
+          key = _a.keyPresssed,
           func = _a.func;
       if (e.key === key) func();
     };
@@ -42691,21 +42746,22 @@ var polarPos = function (_super) {
   function polarPos() {
     var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _this.state = {
-      azi: 0.8,
-      alt: 0.7,
-      war: 0.6
-    };
+    _this.state = {};
     return _this;
   }
 
   polarPos.prototype.render = function () {
-    var _a = this.state,
-        alt = _a.alt,
-        azi = _a.azi,
-        war = _a.war;
-    var fl = Math.floor;
-    return _react.default.createElement("div", null, _react.default.createElement("pre", null, "Azimoth:      ", fl(azi * 100).toString(16).toUpperCase()), _react.default.createElement("pre", null, "Altitude:     ", fl(alt * 100).toString(16).toUpperCase()), _react.default.createElement("pre", null, "Warp:         ", fl(war * 100).toString(16).toUpperCase()));
+    var _a = this.props,
+        az = _a.az,
+        al = _a.al,
+        tone = _a.tone;
+    var _b = this.props.pos,
+        x = _b.x,
+        y = _b.y,
+        z = _b.z;
+    var fl = Math.floor,
+        abs = Math.abs;
+    return _react.default.createElement("div", null, _react.default.createElement("pre", null, "Azimoth:      ", (az < 0 ? '-' : '+') + abs(fl(az * 284)).toString(16).toUpperCase()), _react.default.createElement("pre", null, "Altitude:     ", (al < 0 ? '-' : '+') + abs(fl(al * 284)).toString(16).toUpperCase()), _react.default.createElement("pre", null, "Tone:         ", (tone < 0 ? '-' : '+') + abs(fl(tone * 284)).toString(16).toUpperCase()), _react.default.createElement("pre", null, "X:            ", (x < 0 ? '-' : '+') + abs(fl(x * 64)).toString(16).toUpperCase()), _react.default.createElement("pre", null, "Y:            ", (y < 0 ? '-' : '+') + abs(fl(y * 64)).toString(16).toUpperCase()), _react.default.createElement("pre", null, "Z:            ", (z < 0 ? '-' : '+') + abs(fl(z * 64)).toString(16).toUpperCase()));
   };
 
   return polarPos;
@@ -42730,6 +42786,8 @@ var _typewriterEffect = _interopRequireDefault(require("typewriter-effect"));
 var _writing = _interopRequireDefault(require("../writing"));
 
 var _polarPos = _interopRequireDefault(require("./polarPos"));
+
+var _contContext = require("./contContext");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42767,13 +42825,49 @@ var Controls = function (_super) {
   function Controls() {
     var _this = _super !== null && _super.apply(this, arguments) || this;
 
-    _this.state = {};
+    _this.state = {
+      al: _this.context.alt,
+      az: _this.context.azi,
+      tone: _this.context.tone,
+      pos: {
+        x: 0,
+        y: 0,
+        z: 0
+      }
+    };
+
+    _this.updateState = function (arg) {
+      var _a = _this.context,
+          x = _a.x,
+          y = _a.y,
+          z = _a.z;
+
+      _this.setState({
+        al: _this.context.alt,
+        az: _this.context.azi,
+        tone: _this.context.tone,
+        pos: {
+          x: x,
+          y: y,
+          z: z
+        }
+      });
+    };
+
     return _this;
   }
+
+  Controls.prototype.componentDidMount = function () {
+    this.context.attachPositionHandler(this.updateState);
+  };
 
   Controls.prototype.render = function () {
     var _this = this;
 
+    var _a = this.state.pos,
+        x = _a.x,
+        y = _a.y,
+        z = _a.z;
     return _react.default.createElement("div", {
       className: 'sidebar',
       style: {
@@ -42782,68 +42876,77 @@ var Controls = function (_super) {
     }, _react.default.createElement("div", null, _react.default.createElement("h3", null, "Wormhole Interaction Interface"), _react.default.createElement("p", null, "The interface is controlled through the keyboard or the following buttons")), _react.default.createElement("div", {
       className: 'button-con'
     }, _react.default.createElement("div", null), _react.default.createElement("div", null, "--"), _react.default.createElement("div", null, "-"), _react.default.createElement("div", null, "+"), _react.default.createElement("div", null, "++"), _react.default.createElement("div", null, "azimoth"), _react.default.createElement(_keyButton.default, {
-      key: 'q',
+      keyPresssed: 'q',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('azi', '--');
       }
     }, "Q"), _react.default.createElement(_keyButton.default, {
-      key: 'w',
+      keyPresssed: 'w',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('azi', '-');
       }
     }, "W"), _react.default.createElement(_keyButton.default, {
-      key: 'e',
+      keyPresssed: 'e',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('azi', '+');
       }
     }, "E"), _react.default.createElement(_keyButton.default, {
-      key: 'r',
+      keyPresssed: 'r',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('azi', '++');
       }
     }, "R"), _react.default.createElement("div", null, "altitude"), _react.default.createElement(_keyButton.default, {
-      key: 'a',
+      keyPresssed: 'a',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('alt', '--');
       }
     }, "A"), _react.default.createElement(_keyButton.default, {
-      key: 's',
+      keyPresssed: 's',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('alt', '-');
       }
     }, "S"), _react.default.createElement(_keyButton.default, {
-      key: 'd',
+      keyPresssed: 'd',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('alt', '+');
       }
     }, "D"), _react.default.createElement(_keyButton.default, {
-      key: 'f',
+      keyPresssed: 'f',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('alt', '++');
       }
     }, "F"), _react.default.createElement("div", null, "tone"), _react.default.createElement(_keyButton.default, {
-      key: 'z',
+      keyPresssed: 'z',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('tone', '--');
       }
     }, "Z"), _react.default.createElement(_keyButton.default, {
-      key: 'x',
+      keyPresssed: 'x',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('tone', '-');
       }
     }, "X"), _react.default.createElement(_keyButton.default, {
-      key: 'c',
+      keyPresssed: 'c',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('tone', '+');
       }
     }, "C"), _react.default.createElement(_keyButton.default, {
-      key: 'v',
+      keyPresssed: 'v',
       func: function () {
-        return _this;
+        return _this.context.updateVectors('tone', '++');
       }
     }, "V")), _react.default.createElement("div", {
       className: 'output-text'
-    }, _react.default.createElement("h4", null, "Output"), _react.default.createElement(_polarPos.default, null), _react.default.createElement("div", {
+    }, _react.default.createElement("h4", null, "Output"), _react.default.createElement(_polarPos.default, {
+      pos: {
+        x: x,
+        y: y,
+        z: z
+      },
+      al: this.state.al,
+      az: this.state.az,
+      tone: this.state.tone
+    }), _react.default.createElement("div", {
       style: {
         overflowY: 'scroll',
         maxHeight: 'auto'
@@ -42860,12 +42963,13 @@ var Controls = function (_super) {
     }))));
   };
 
+  Controls.contextType = _contContext.controllerContext;
   return Controls;
 }(_react.Component);
 
 var _default = Controls;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./keyButton":"reactModules/keyButton.tsx","typewriter-effect":"../node_modules/typewriter-effect/dist/react.js","../writing":"writing.ts","./polarPos":"reactModules/polarPos.tsx"}],"reactModules/Visuals.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./keyButton":"reactModules/keyButton.tsx","typewriter-effect":"../node_modules/typewriter-effect/dist/react.js","../writing":"writing.ts","./polarPos":"reactModules/polarPos.tsx","./contContext":"reactModules/contContext.ts"}],"reactModules/Visuals.tsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42950,9 +43054,12 @@ var Visuals = function (_super) {
       height: hei,
       loop: true,
       muted: true,
+      style: {
+        display: 'hidden'
+      },
       autoPlay: true,
       src: this.context.videoURL
-    }), _react.default.createElement("canvas", {
+    }, _react.default.createElement("source", null)), _react.default.createElement("canvas", {
       style: {
         position: 'relative',
         left: '0px',
