@@ -1,5 +1,7 @@
 precision highp float;
 
+uniform sampler2D vid;
+
 varying vec2 uv;
 
 const vec4 RED=vec4(1.,0.,0.,1.);

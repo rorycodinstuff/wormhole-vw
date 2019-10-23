@@ -44,8 +44,8 @@ class LoadingScreen extends Component<Props, State> {
           </p>
           <p>
             This piece has an audio component and uses webGL which requires a
-            recent computer, it is also optemised for a 16:10 aspect ratio
-            screen
+            recent computer, and a browser that can stream webm video (firefox
+            or chrome) it is also optimised for a 16:10 aspect ratio screen
           </p>
           <p>{this.state.text}</p>
           {this.state.hasLoaded ? (
