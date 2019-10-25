@@ -36,10 +36,7 @@ class Typewriter extends React.Component {
         this.type(this._originalString.pop());
       } else {
         if (Array.isArray(text) && text.length) {
-          this._originalString = text
-            .pop()
-            .split('')
-            .reverse();
+          this._originalString = text.pop().split('')``.reverse();
 
           setTimeout(() => {
             this.setState({ text: '' });
