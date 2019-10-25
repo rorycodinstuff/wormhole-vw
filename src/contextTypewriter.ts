@@ -2,15 +2,15 @@ import Controller from './reactModules/Controller';
 interface args {
   ctx: CanvasRenderingContext2D;
   ctr: Controller;
-  text: String[];
+  text: string[];
 }
 export class contextTypewriter {
   ctx: CanvasRenderingContext2D;
   textSize: number;
   linesPerScreen: number;
-  originalText: String[];
-  textToDraw: String[];
-  text: String[][];
+  originalText: string[];
+  textToDraw: string[];
+  text: string[][];
   constructor(args: args) {
     const { ctx, text } = args;
     this.ctx = args.ctx;
@@ -31,9 +31,22 @@ export class contextTypewriter {
   }
   type = () => {
     if (this.text[0].length) {
-      this.textToDraw[this.textToDraw.length - 1] =
-        this.textToDraw[this.textToDraw.length - 1] +
-        this.text[this.text.length - 1].pop();
+      const char = this.text[0].pop()!;
+      this.textToDraw[this.textToDraw.length - 1] += char;
+      return;
+    } else if (this.text.length < 1) {
+      this.text = this.originalText
+        .slice(0)
+        .reverse()
+        .map(s => s.split('').reverse());
+      this.textToDraw = [''];
+      return;
+    } else if (this.textToDraw.length >= this.linesPerScreen) {
+      this.textToDraw = [''];
+      return;
+    } else {
+      this.text.pop();
+      this.textToDraw.push('');
     }
   };
 }
