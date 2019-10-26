@@ -51,7 +51,12 @@ export default class Visuals extends Component<Props, State> {
           <source />
         </video>
         <canvas
-          style={{ position: 'relative', left: '0px', top: `-${hei}px` }}
+          style={{
+            position: 'relative',
+            left: '0px',
+            top: `-${hei}px`,
+            display: 'hidden',
+          }}
           id='gl'
           width={wid}
           height={hei}
@@ -59,7 +64,6 @@ export default class Visuals extends Component<Props, State> {
         ></canvas>
         <canvas
           id='text'
-          hidden
           style={{ position: 'relative', left: '0px', top: `-${2 * hei}px` }}
           width={wid}
           height={hei}

@@ -1,6 +1,7 @@
 import { Jfaclass } from '../jfaFiles/jfa';
 import REGL, { Regl } from 'regl';
 import lines from '../linesForRender';
+import { contextTypewriter } from '../contextTypewriter';
 
 export default class Controller {
   videoURL?: string;
@@ -23,6 +24,7 @@ export default class Controller {
   // audioSource;
   glContext?: Regl;
   textCanvas?: CanvasRenderingContext2D;
+  contextTypewriter?: contextTypewriter;
   videoEl?: HTMLVideoElement;
   loadingHandlers: Set<Function> = new Set();
   positionHandlers: Set<Function> = new Set();
@@ -114,32 +116,27 @@ export default class Controller {
     let y = Math.sin(-0.5 * Math.PI + this.alt * Math.PI) * this.len;
     this.setPos({ x, y, z });
   }
-  attachVideoCanvas(canvas: HTMLVideoElement) {
+  attachVideoCanvas = (canvas: HTMLVideoElement) => {
     this.videoEl = canvas;
     canvas.currentTime = 3;
     const ot = this.jfa!.runJFA();
     const self = this;
+    this.contextTypewriter = new contextTypewriter({
+      ctr: this,
+      ctx: this.textCanvas!,
+      text: lines,
+    });
+    const typing = (speed: number) => {
+      this.contextTypewriter!.type();
+      const sp = 30 + self.z * 50;
+      window.setTimeout(() => typing(sp), speed);
+    };
     window.setTimeout(() => {
       let render = () => {
         if (!this.textCanvas) return;
         this.elapsed = Date.now() - this.startTime;
         if (this.elapsed % 100 < 10) this.jfa!.updateVideoTextures(canvas);
-        this.textCanvas.clearRect(0, 0, this.width, this.height);
-        this.textCanvas.save();
-
-        this.textCanvas.font = '64px VT323';
-        this.textCanvas.fillStyle = 'white';
-        this.textCanvas.translate(
-          0,
-          -1000 + Math.sin(this.elapsed / 10000) * 1200
-        );
-        this.textCanvas.scale(0.7, 0.7);
-        for (let i = 0; i < lines.length; i++) {
-          let y = 20 + i * 102;
-          this.textCanvas.fillText(lines[i], 5, y);
-        }
-
-        this.textCanvas.restore();
+        this.contextTypewriter!.render();
         this.jfa!._inputTexture(this.textCanvas!);
         this.jfa!._videoTexture(canvas);
         const v = this.jfa!.runJFA();
@@ -147,11 +144,12 @@ export default class Controller {
         window.requestAnimationFrame(render);
       };
       requestAnimationFrame(render);
+      typing(100);
     }, 500);
     const updatePos = () => {
       this.updateLen();
       window.requestAnimationFrame(updatePos);
     };
     window.requestAnimationFrame(updatePos);
-  }
+  };
 }

@@ -42123,6 +42123,76 @@ var lines = ['This is how time works  we see    everything at once    we don’t
 exports.lines = lines;
 var _default = lines;
 exports.default = _default;
+},{}],"contextTypewriter.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.contextTypewriter = void 0;
+
+var contextTypewriter = function () {
+  function contextTypewriter(args) {
+    var ctx = args.ctx,
+        text = args.text;
+    var scale = window.devicePixelRatio;
+    this.ctx = args.ctx;
+    var width = ctx.canvas.width * scale;
+    var height = ctx.canvas.height * scale;
+    var maxTextWidth = text.reduce(function (u, s) {
+      return u < s.length ? s.length : u;
+    }, 0);
+    this.textSize = Math.floor(width / maxTextWidth);
+    this.linesPerScreen = Math.floor((height - this.textSize) / (this.textSize * 1.2));
+    this.originalText = text;
+    this.text = this.originalText.slice(0).reverse().map(function (s) {
+      return s.split('').reverse();
+    });
+    this.textToDraw = [''];
+  }
+
+  contextTypewriter.prototype.type = function () {
+    if (this.text[0] && this.text[this.text.length - 1].length) {
+      var char = this.text[this.text.length - 1].pop();
+      this.textToDraw[this.textToDraw.length - 1] += char;
+      return;
+    } else if (this.text.length < 1) {
+      this.text = this.originalText.slice(0).reverse().map(function (s) {
+        return s.split('').reverse();
+      });
+      this.textToDraw = [''];
+      return;
+    } else if (this.textToDraw.length >= this.linesPerScreen) {
+      this.textToDraw = [''];
+      return;
+    } else {
+      this.text.pop();
+      this.textToDraw.push('');
+      return;
+    }
+  };
+
+  contextTypewriter.prototype.render = function () {
+    var _a = this,
+        ctx = _a.ctx,
+        textSize = _a.textSize;
+
+    ctx.font = this.textSize + "px VT323";
+    ctx.fillStyle = 'white';
+    ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    var lHeight = Math.floor(this.textSize * 1.2);
+    var margin = Math.floor(this.textSize / 2);
+
+    for (var i = 0; i < this.textToDraw.length; i++) {
+      var line = this.textToDraw[i];
+      ctx.fillText(line, margin, margin + textSize * i);
+    }
+  };
+
+  return contextTypewriter;
+}();
+
+exports.contextTypewriter = contextTypewriter;
 },{}],"reactModules/Controller.ts":[function(require,module,exports) {
 "use strict";
 
@@ -42136,6 +42206,8 @@ var _jfa = require("../jfaFiles/jfa");
 var _regl = _interopRequireDefault(require("regl"));
 
 var _linesForRender = _interopRequireDefault(require("../linesForRender"));
+
+var _contextTypewriter = require("../contextTypewriter");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42319,6 +42391,59 @@ var Controller = function () {
 
       _this.updatePosition();
     };
+
+    this.attachVideoCanvas = function (canvas) {
+      _this.videoEl = canvas;
+      canvas.currentTime = 3;
+
+      var ot = _this.jfa.runJFA();
+
+      var self = _this;
+      _this.contextTypewriter = new _contextTypewriter.contextTypewriter({
+        ctr: _this,
+        ctx: _this.textCanvas,
+        text: _linesForRender.default
+      });
+
+      var typing = function (speed) {
+        _this.contextTypewriter.type();
+
+        var sp = 30 + self.z * 50;
+        window.setTimeout(function () {
+          return typing(sp);
+        }, speed);
+      };
+
+      window.setTimeout(function () {
+        var render = function () {
+          if (!_this.textCanvas) return;
+          _this.elapsed = Date.now() - _this.startTime;
+          if (_this.elapsed % 100 < 10) _this.jfa.updateVideoTextures(canvas);
+
+          _this.contextTypewriter.render();
+
+          _this.jfa._inputTexture(_this.textCanvas);
+
+          _this.jfa._videoTexture(canvas);
+
+          var v = _this.jfa.runJFA();
+
+          self.updateLen();
+          window.requestAnimationFrame(render);
+        };
+
+        requestAnimationFrame(render);
+        typing(100);
+      }, 500);
+
+      var updatePos = function () {
+        _this.updateLen();
+
+        window.requestAnimationFrame(updatePos);
+      };
+
+      window.requestAnimationFrame(updatePos);
+    };
   }
 
   Controller.prototype.fetchFiles = function () {
@@ -42435,66 +42560,12 @@ var Controller = function () {
     });
   };
 
-  Controller.prototype.attachVideoCanvas = function (canvas) {
-    var _this = this;
-
-    this.videoEl = canvas;
-    canvas.currentTime = 3;
-    var ot = this.jfa.runJFA();
-    var self = this;
-    window.setTimeout(function () {
-      var render = function () {
-        if (!_this.textCanvas) return;
-        _this.elapsed = Date.now() - _this.startTime;
-        if (_this.elapsed % 100 < 10) _this.jfa.updateVideoTextures(canvas);
-
-        _this.textCanvas.clearRect(0, 0, _this.width, _this.height);
-
-        _this.textCanvas.save();
-
-        _this.textCanvas.font = '64px VT323';
-        _this.textCanvas.fillStyle = 'white';
-
-        _this.textCanvas.translate(0, -1000 + Math.sin(_this.elapsed / 10000) * 1200);
-
-        _this.textCanvas.scale(0.7, 0.7);
-
-        for (var i = 0; i < _linesForRender.default.length; i++) {
-          var y = 20 + i * 102;
-
-          _this.textCanvas.fillText(_linesForRender.default[i], 5, y);
-        }
-
-        _this.textCanvas.restore();
-
-        _this.jfa._inputTexture(_this.textCanvas);
-
-        _this.jfa._videoTexture(canvas);
-
-        var v = _this.jfa.runJFA();
-
-        self.updateLen();
-        window.requestAnimationFrame(render);
-      };
-
-      requestAnimationFrame(render);
-    }, 500);
-
-    var updatePos = function () {
-      _this.updateLen();
-
-      window.requestAnimationFrame(updatePos);
-    };
-
-    window.requestAnimationFrame(updatePos);
-  };
-
   return Controller;
 }();
 
 var _default = Controller;
 exports.default = _default;
-},{"../jfaFiles/jfa":"jfaFiles/jfa.ts","regl":"../node_modules/regl/dist/regl.js","../linesForRender":"linesForRender.ts"}],"reactModules/contContext.ts":[function(require,module,exports) {
+},{"../jfaFiles/jfa":"jfaFiles/jfa.ts","regl":"../node_modules/regl/dist/regl.js","../linesForRender":"linesForRender.ts","../contextTypewriter":"contextTypewriter.ts"}],"reactModules/contContext.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42597,7 +42668,7 @@ var LoadingScreen = function (_super) {
       style: {
         textAlign: 'center'
       }
-    }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist will independently respond to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, "This piece has an audio component and uses webGL which requires a recent computer, and a browser that can stream webm video (firefox or chrome) it is also optemised for a 16:10 aspect ratio screen"), _react.default.createElement("p", null, this.state.text), this.state.hasLoaded ? _react.default.createElement(_ReadyButton.default, {
+    }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist will independently respond to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, "This piece has an audio component and uses webGL which requires a recent computer, and a browser that can stream webm video (firefox or chrome) it is also optimised for a 16:10 aspect ratio screen"), _react.default.createElement("p", null, this.state.text), this.state.hasLoaded ? _react.default.createElement(_ReadyButton.default, {
       onPress: this.props.passThroughFunc
     }) : _react.default.createElement(_LoadingText.default, null)));
   };
@@ -43063,7 +43134,8 @@ var Visuals = function (_super) {
       style: {
         position: 'relative',
         left: '0px',
-        top: "-" + hei + "px"
+        top: "-" + hei + "px",
+        display: 'hidden'
       },
       id: 'gl',
       width: wid,
@@ -43071,7 +43143,6 @@ var Visuals = function (_super) {
       ref: this.glRef
     }), _react.default.createElement("canvas", {
       id: 'text',
-      hidden: true,
       style: {
         position: 'relative',
         left: '0px',
