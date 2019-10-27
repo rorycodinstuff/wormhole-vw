@@ -42139,7 +42139,7 @@ var contextTypewriter = function () {
       return u < s.length ? s.length : u;
     }, 0);
     this.textSize = Math.floor(width / (maxTextWidth * 0.5));
-    this.linesPerScreen = Math.floor((height - this.textSize) / (this.textSize * 1.6));
+    this.linesPerScreen = Math.floor((height - this.textSize) / (this.textSize * 2));
     this.originalText = text;
     this.text = this.originalText.slice(0).reverse().map(function (s) {
       return s.split('').reverse();
@@ -42445,11 +42445,11 @@ var Controller = function () {
       return __generator(this, function (_c) {
         switch (_c.label) {
           case 0:
-            return [4, window.fetch('https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/RubySolly-Hurihuri.mp3')];
+            return [4, window.fetch('https://drive.google.com/uc?export=download&id=16NK-17yAy2fB4IXBaRmEIlG-9o3S51eM')];
 
           case 1:
             audioResp = _c.sent();
-            return [4, window.fetch('https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/640x480.webm')];
+            return [4, window.fetch('https://drive.google.com/uc?export=download&id=16azNUz9ga4cP9ILEWVFsQmDMH-Ni1cD0')];
 
           case 2:
             videoResp = _c.sent();
@@ -42658,8 +42658,7 @@ var LoadingScreen = function (_super) {
       style: {
         textAlign: 'center'
       }
-
-    }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist has independently responded to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, "This piece has an audio component and uses webGL which requires a recent computer, and a browser that can stream mp4 video (Firefox or Chrome). It is also optimised for a 16:10 aspect ratio screen."), _react.default.createElement("p", null, this.state.text), this.state.hasLoaded ? _react.default.createElement(_ReadyButton.default, {
+    }, "Wormhole"), _react.default.createElement("p", null, "A wormhole has sucked up some of the best young writing in Australia and New Zealand and regurgitated an exquisite corpse for the digital era. This collaborative multimedia piece joins together four young artists from Voiceworks Online and Starling literary journals, combining text, video, audio and code. Each artist will independently respond to the theme \u2018wormhole\u2019, with the final work coming together as an emergent, collaborative piece of digital debris."), _react.default.createElement("p", null, "Featuring work by Sinead Overbye, Veronica Charmont, Ruby Mae Hinepunui Solly and Ruby Quail. Presented in partnership with Voiceworks and Starling"), _react.default.createElement("p", null, "This piece has an audio component and uses webGL which requires a recent computer, and a browser that can stream webm video (firefox or chrome) it is also optimised for a 16:10 aspect ratio screen"), _react.default.createElement("p", null, this.state.text), this.state.hasLoaded ? _react.default.createElement(_ReadyButton.default, {
       onPress: this.props.passThroughFunc
     }) : _react.default.createElement(_LoadingText.default, null)));
   };
@@ -42924,7 +42923,7 @@ var Controls = function (_super) {
       style: {
         maxHeight: window.innerHeight - 100
       }
-    }, _react.default.createElement("div", null, _react.default.createElement("h3", null, "Wormhole Control Console"), _react.default.createElement("p", null, "Control the wormhole through your keyboard or by clicking the buttons below")), _react.default.createElement("div", {
+    }, _react.default.createElement("div", null, _react.default.createElement("h3", null, "Wormhole Control Panel"), _react.default.createElement("p", null, "Control the wormhole with the keyboard or by clicking the buttons below")), _react.default.createElement("div", {
       className: 'button-con'
     }, _react.default.createElement("div", null), _react.default.createElement("div", null, "--"), _react.default.createElement("div", null, "-"), _react.default.createElement("div", null, "+"), _react.default.createElement("div", null, "++"), _react.default.createElement("div", null, "azimoth"), _react.default.createElement(_keyButton.default, {
       keyPresssed: 'q',

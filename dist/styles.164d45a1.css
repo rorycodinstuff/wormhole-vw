@@ -43,7 +43,7 @@ h3 {
   width: auto;
   row-gap: 4px;
   grid-template: "text" min-content "controls" min-content "output" 80%/auto;
-  padding: 0 20px 0 20px;
+  padding: 0 32px 0 10px;
   margin-bottom: 8em;
   margin-top: 0em;
 }
@@ -71,7 +71,8 @@ h3 {
   padding-right: -16px;
   line-height: normal;
   max-width: 100%;
-  max-height: 200px;
+  overflow-x: wrap;
+  overflow-y: hidden;
   white-space: normal;
 }
 
