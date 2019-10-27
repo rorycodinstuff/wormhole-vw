@@ -23,7 +23,7 @@ export class contextTypewriter {
     );
     this.textSize = Math.floor(width / (maxTextWidth * 0.5));
     this.linesPerScreen = Math.floor(
-      (height - this.textSize) / (this.textSize * 1.6)
+      (height - this.textSize) / (this.textSize * 2)
     );
     this.originalText = text;
     this.text = this.originalText

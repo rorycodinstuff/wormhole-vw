@@ -42139,7 +42139,7 @@ var contextTypewriter = function () {
       return u < s.length ? s.length : u;
     }, 0);
     this.textSize = Math.floor(width / (maxTextWidth * 0.5));
-    this.linesPerScreen = Math.floor((height - this.textSize) / (this.textSize * 1.6));
+    this.linesPerScreen = Math.floor((height - this.textSize) / (this.textSize * 2));
     this.originalText = text;
     this.text = this.originalText.slice(0).reverse().map(function (s) {
       return s.split('').reverse();
