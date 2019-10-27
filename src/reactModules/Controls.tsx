@@ -38,7 +38,7 @@ export default class Controls extends Component<Props, State> {
   render() {
     const { x, y, z } = this.state.pos;
     return (
-      <div className='sidebar' style={{ maxHeight: window.innerHeight - 100 }}>
+      <div className='sidebar' style={{ maxHeight: window.innerHeight }}>
         <div>
           <h3>Wormhole Interaction Interface</h3>
           <p>
