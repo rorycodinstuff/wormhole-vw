@@ -42445,11 +42445,11 @@ var Controller = function () {
       return __generator(this, function (_c) {
         switch (_c.label) {
           case 0:
-            return [4, window.fetch('https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/RubySolly-Hurihuri.mp3')];
+            return [4, window.fetch('https://drive.google.com/uc?export=download&id=16NK-17yAy2fB4IXBaRmEIlG-9o3S51eM')];
 
           case 1:
             audioResp = _c.sent();
-            return [4, window.fetch('https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/640x480.webm')];
+            return [4, window.fetch('https://drive.google.com/uc?export=download&id=16azNUz9ga4cP9ILEWVFsQmDMH-Ni1cD0')];
 
           case 2:
             videoResp = _c.sent();
@@ -42923,7 +42923,7 @@ var Controls = function (_super) {
       style: {
         maxHeight: window.innerHeight - 100
       }
-    }, _react.default.createElement("div", null, _react.default.createElement("h3", null, "Wormhole Interaction Interface"), _react.default.createElement("p", null, "The interface is controlled through the keyboard or the following buttons")), _react.default.createElement("div", {
+    }, _react.default.createElement("div", null, _react.default.createElement("h3", null, "Wormhole Control Panel"), _react.default.createElement("p", null, "Control the wormhole with the keyboard or by clicking the buttons below")), _react.default.createElement("div", {
       className: 'button-con'
     }, _react.default.createElement("div", null), _react.default.createElement("div", null, "--"), _react.default.createElement("div", null, "-"), _react.default.createElement("div", null, "+"), _react.default.createElement("div", null, "++"), _react.default.createElement("div", null, "azimoth"), _react.default.createElement(_keyButton.default, {
       keyPresssed: 'q',
@@ -42987,7 +42987,7 @@ var Controls = function (_super) {
       }
     }, "V")), _react.default.createElement("div", {
       className: 'output-text'
-    }, _react.default.createElement("h4", null, "Output"), _react.default.createElement(_polarPos.default, {
+    }, _react.default.createElement("h3", null, "Output"), _react.default.createElement(_polarPos.default, {
       pos: {
         x: x,
         y: y,
