@@ -43,7 +43,7 @@ h3 {
   width: auto;
   row-gap: 4px;
   grid-template: "text" min-content "controls" min-content "output" 80%/auto;
-  padding: 0 32px 0 20px;
+  padding: 0 20px 0 20px;
   margin-bottom: 8em;
   margin-top: 0em;
 }
