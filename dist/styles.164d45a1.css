@@ -71,9 +71,7 @@ h3 {
   padding-right: -16px;
   line-height: normal;
   max-width: 100%;
-  overflow-x: scroll;
-  overflow-y: scroll;
-  max-height: 160px;
+  max-height: 200px;
   white-space: normal;
 }
 
