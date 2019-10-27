@@ -72,6 +72,8 @@ h3 {
   line-height: normal;
   max-width: 100%;
   overflow-x: scroll;
+  overflow-y: scroll;
+  max-height: 160px;
   white-space: normal;
 }
 
