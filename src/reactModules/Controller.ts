@@ -28,7 +28,7 @@ export default class Controller {
   positionHandlers: Set<Function> = new Set();
   async fetchFiles() {
     const audioResp = await window.fetch(
-      'https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/RubySolly-Hurihuri.mp3'
+      'https://drive.google.com/uc?export=download&id=16NK-17yAy2fB4IXBaRmEIlG-9o3S51eM'
     );
     const videoResp = await window.fetch(
       'https://drive.google.com/uc?export=download&id=16azNUz9ga4cP9ILEWVFsQmDMH-Ni1cD0'
