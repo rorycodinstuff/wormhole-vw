@@ -5,6 +5,7 @@ import prepare from './prepare.frag';
 import keyFrag from './keyFill.frag';
 import identity from './identity.frag';
 import tWarp from './timeWarp.frag';
+import Controller from '../reactModules/Controller';
 type n = number;
 type Tex = regl.Texture;
 type fb = regl.Framebuffer2D;
@@ -32,12 +33,13 @@ interface idProps {
   resolution: [n, n];
   id: regl.Texture2D | regl.Framebuffer2D;
   vid: regl.Texture2D | regl.Framebuffer2D;
-  vidFrames: regl.Texture2D[];
+  pos: [number, number, number];
 }
 export class Jfaclass {
   gl: regl.Regl;
   wid: number;
   hei: number;
+  cont: Controller;
   _inputTexture: regl.Texture2D;
   _videoTexture: regl.Texture2D;
   setupCanvas: CanvasRenderingContext2D;
@@ -55,12 +57,14 @@ export class Jfaclass {
     reglInstance: regl.Regl,
     width: number,
     height: number,
-    input: regl.TextureImageData
+    input: regl.TextureImageData,
+    con: Controller
   ) {
     this.gl = reglInstance;
     const gl = this.gl;
     this.wid = width;
     this.hei = height;
+    this.cont = con;
     this._inputTexture = gl.texture({
       data: input,
       width,
@@ -73,9 +77,6 @@ export class Jfaclass {
     canv.height = this.hei;
     this.setupCanvas = canv.getContext('2d')!;
     this._videoTexture = gl.texture({
-      data: input,
-      width,
-      height,
       wrap: 'clamp',
     });
     this.videoTextures = new Array(10).fill(
@@ -165,11 +166,7 @@ export class Jfaclass {
         u_resolution: (c, p) => p.resolution,
       },
     });
-    const vidsuniforms: { [s: string]: Function } = {};
-    this.videoTextures.map((t, i) => {
-      vidsuniforms[`u_vidFrames[${i}]`] = (c: any, p: idProps) =>
-        p.vidFrames[i];
-    });
+
     this.warpFunc = gl({
       frag: tWarp,
       framebuffer: null,
@@ -177,7 +174,6 @@ export class Jfaclass {
         id: (c, p: any) => p.id,
         u_resolution: [this.wid, this.hei],
         vid: (c, p: idProps) => p.vid,
-        ...vidsuniforms,
       },
     });
     this.idFunc = gl({
@@ -185,7 +181,9 @@ export class Jfaclass {
       framebuffer: null,
       uniforms: {
         vid: (c, p: idProps) => p.vid,
-        ...vidsuniforms,
+        id: (c, p: idProps) => p.id,
+        pos: (c, p: any) => p.pos,
+        res: (c, p: idProps) => p.resolution,
       },
     });
   }
@@ -243,7 +241,14 @@ export class Jfaclass {
         })
       );
     }
-    this.setupFunc(() => this.idFunc({ vid: this.front }));
+    this.setupFunc(() =>
+      this.idFunc({
+        vid: this._videoTexture,
+        id: fbAccess[(totalSteps - 1) % 2],
+        pos: [this.cont.x, this.cont.y, this.cont.z],
+        resolution: [this.wid, this.hei],
+      })
+    );
     return fbAccess[(totalSteps - 1) % 2];
   }
   getFilled(inputFB: regl.Texture2D | regl.Framebuffer2D) {

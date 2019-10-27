@@ -44,7 +44,7 @@ export default class Visuals extends Component<Props, State> {
           height={hei}
           loop
           muted
-          style={{ display: 'hidden' }}
+          style={{ opacity: '0%' }}
           autoPlay
           src={this.context.videoURL}
         >
@@ -64,7 +64,12 @@ export default class Visuals extends Component<Props, State> {
         ></canvas>
         <canvas
           id='text'
-          style={{ position: 'relative', left: '0px', top: `-${2 * hei}px` }}
+          style={{
+            position: 'relative',
+            left: '0px',
+            top: `-${2 * hei}px`,
+            opacity: '0%',
+          }}
           width={wid}
           height={hei}
           ref={this.canvRef}

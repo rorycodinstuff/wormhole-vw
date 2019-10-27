@@ -5,6 +5,7 @@ import text from '../writing';
 import Pos from './polarPos';
 import { controllerContext } from './contContext';
 import Controller from './Controller';
+import { coolLines } from '../linesForRender';
 interface Props {}
 interface State {
   al: number;
@@ -136,10 +137,10 @@ export default class Controls extends Component<Props, State> {
             az={this.state.az}
             tone={this.state.tone}
           />
-          <div style={{ overflowY: 'scroll', maxHeight: 'auto' }}>
+          <div style={{ overflowY: 'clip', maxHeight: 'auto' }}>
             <Typewriter
               options={{
-                strings: text,
+                strings: coolLines,
                 cursor: '',
                 autoStart: true,
                 loop: false,

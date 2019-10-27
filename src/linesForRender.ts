@@ -61,5 +61,14 @@ export const lines = [
   '                                      in our pocket of sky  ',
   '                                     & if I could have anything  in all of the parallel universes',
   '                                    it would be this',
+  '                                                    ',
 ];
 export default lines;
+export const coolLines = lines
+  .map(l =>
+    l
+      .split('')
+      .map(c => c.charCodeAt(0).toString(16))
+      .join(' ')
+  )
+  .join(' ');

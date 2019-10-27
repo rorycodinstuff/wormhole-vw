@@ -67,7 +67,7 @@ export default class Controller {
       canvas,
       attributes: { preserveDrawingBuffer: true },
     });
-    this.jfa = new Jfaclass(this.glContext, width, height, canvas);
+    this.jfa = new Jfaclass(this.glContext, width, height, canvas, this);
     this.glContext.clear({
       color: [0, 0, 0, 0],
     });
@@ -78,8 +78,6 @@ export default class Controller {
     this.textCanvas.font = '32px VT323';
     this.textCanvas.strokeStyle = 'white';
     this.jfa!.inputTexture = this.textCanvas;
-    const ot = this.jfa!.runJFA();
-    this.jfa!.getFilled(ot);
   }
   updateLen = () => {
     this.len =
@@ -118,8 +116,6 @@ export default class Controller {
   }
   attachVideoCanvas = (canvas: HTMLVideoElement) => {
     this.videoEl = canvas;
-    canvas.currentTime = 3;
-    const ot = this.jfa!.runJFA();
     const self = this;
     this.contextTypewriter = new contextTypewriter({
       ctr: this,
@@ -128,7 +124,7 @@ export default class Controller {
     });
     const typing = (speed: number) => {
       this.contextTypewriter!.type();
-      const sp = 30 + self.z * 50;
+      const sp = 50 + this.z * 40;
       window.setTimeout(() => typing(sp), speed);
     };
     window.setTimeout(() => {

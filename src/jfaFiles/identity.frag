@@ -1,7 +1,9 @@
 precision highp float;
 
 uniform sampler2D vid;
-
+uniform sampler2D id;
+uniform vec3 pos;
+uniform vec2 res;
 varying vec2 uv;
 
 const vec4 RED=vec4(1.,0.,0.,1.);
@@ -89,10 +91,29 @@ vec2 cell_closestSeed(const vec4 obj_){
 vec2 flipY(vec2 inpos){
   return vec2(inpos.x,1.-inpos.y);
 }
+vec2 mirrorUv(vec2 inpos){
+  float ix=inpos.x;
+  float iy=inpos.y;
+  float ox=ix<0.?-1.*ix:ix>=1.?2.-ix:ix;
+  float oy=iy<0.?-1.*iy:iy>=1.?2.-iy:iy;
+  return vec2(ox,oy);
+}
 void main(){
   
   vec2 correct_uv=flipY(uv);
   // if(mod(id,2.)<.01)timeTex=vec4(vec3(1.),0.)-timeTex;
-  gl_FragColor=texture2D(vid,correct_uv);
+  vec2 newV=cell_closestSeed(texture2D(id,correct_uv));
+  vec2 newVUV=newV/res;
+  float dist=length((newV)-correct_uv*res);
+  float clampedDist=clamp(dist/30.,0.,1.);
+  float newX=newVUV.x+.1*pos.x;
+  vec2 bentUV=vec2(newX,correct_uv.y);
+  vec3 hereVideo=texture2D(vid,correct_uv).rgb;
+  vec3 thereVideo=texture2D(vid,mirrorUv(bentUV)).rgb;
+  vec3 video=mix(thereVideo,hereVideo,clampedDist);
+  if(dist<.2&&pos.y<0.){
+    video=mix(1.-video,video,dist/2.);
+  }
+  gl_FragColor=vec4(video,1.);
   // gl_FragColor=vec4(correct_uv,1.,1.);
 }

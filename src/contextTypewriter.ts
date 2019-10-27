@@ -21,9 +21,9 @@ export class contextTypewriter {
       (u, s) => (u < s.length ? s.length : u),
       0
     );
-    this.textSize = Math.floor(width / maxTextWidth);
+    this.textSize = Math.floor(width / (maxTextWidth * 0.5));
     this.linesPerScreen = Math.floor(
-      (height - this.textSize) / (this.textSize * 1.2)
+      (height - this.textSize) / (this.textSize * 1.6)
     );
     this.originalText = text;
     this.text = this.originalText
@@ -62,7 +62,7 @@ export class contextTypewriter {
     const margin = Math.floor(this.textSize / 2);
     for (let i = 0; i < this.textToDraw.length; i++) {
       const line = this.textToDraw[i];
-      ctx.fillText(line, margin, margin + textSize * i);
+      ctx.fillText(line, margin, textSize + margin + lHeight * i);
     }
   }
 }
