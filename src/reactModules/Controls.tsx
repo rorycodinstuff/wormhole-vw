@@ -40,10 +40,9 @@ export default class Controls extends Component<Props, State> {
     return (
       <div className='sidebar' style={{ maxHeight: window.innerHeight - 100}}>
         <div>
-          <h3>Wormhole Interaction Interface</h3>
+          <h3>Wormhole Control Panel</h3>
           <p>
-            The interface is controlled through the keyboard or the following
-            buttons
+            Control the wormhole with the keyboard or by clicking the buttons below
           </p>
         </div>
         <div className='button-con'>
@@ -129,7 +128,7 @@ export default class Controls extends Component<Props, State> {
           </B>
         </div>
         <div className='output-text'>
-          <h4>Output</h4>
+          <h3>Output</h3>
           <Pos
             pos={{ x, y, z }}
             al={this.state.al}
