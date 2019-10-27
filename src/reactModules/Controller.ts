@@ -31,7 +31,7 @@ export default class Controller {
       'https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/RubySolly-Hurihuri.mp3'
     );
     const videoResp = await window.fetch(
-      'https://drive.google.com/uc?export=download&id=1PMn8X35W2nre_RLxkO6ktEFjfoW5c1cK'
+      'https://drive.google.com/uc?export=download&id=16azNUz9ga4cP9ILEWVFsQmDMH-Ni1cD0'
     );
     this.audio = await audioResp.blob();
     this.video = await videoResp.blob();
