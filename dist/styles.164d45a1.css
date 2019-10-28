@@ -34,7 +34,7 @@ h3 {
 
 .main-screen {
   display: grid;
-  grid-template: "side" "main" auto/10% 90%;
+  grid-template: "side" "main" auto/20% 80%;
   width: 100%;
 }
 
