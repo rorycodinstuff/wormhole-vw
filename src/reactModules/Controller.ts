@@ -30,10 +30,10 @@ export default class Controller {
   positionHandlers: Set<Function> = new Set();
   async fetchFiles() {
     const audioResp = await window.fetch(
-      'https://drive.google.com/uc?export=download&id=16NK-17yAy2fB4IXBaRmEIlG-9o3S51eM'
+      'https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/RubySolly-Hurihuri.mp3'
     );
     const videoResp = await window.fetch(
-      'https://drive.google.com/uc?export=download&id=16azNUz9ga4cP9ILEWVFsQmDMH-Ni1cD0'
+      'https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/640x480.webm'
     );
     this.audio = await audioResp.blob();
     this.video = await videoResp.blob();
