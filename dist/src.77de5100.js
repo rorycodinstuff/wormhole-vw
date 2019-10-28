@@ -42138,8 +42138,8 @@ var contextTypewriter = function () {
     var maxTextWidth = text.reduce(function (u, s) {
       return u < s.length ? s.length : u;
     }, 0);
-    this.textSize = Math.floor(width / (maxTextWidth * 0.8));
-    this.linesPerScreen = Math.floor((height - this.textSize) / (this.textSize * 3));
+    this.textSize = Math.floor(width / (maxTextWidth * 0.7));
+    this.linesPerScreen = Math.floor((height - this.textSize) / (this.textSize * 2.7));
     this.originalText = text;
     this.text = this.originalText.slice(0).reverse().map(function (s) {
       return s.split('').reverse();
