@@ -42445,11 +42445,11 @@ var Controller = function () {
       return __generator(this, function (_c) {
         switch (_c.label) {
           case 0:
-            return [4, window.fetch('https://drive.google.com/uc?export=download&id=16NK-17yAy2fB4IXBaRmEIlG-9o3S51eM')];
+            return [4, window.fetch('https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/RubySolly-Hurihuri.mp3')];
 
           case 1:
             audioResp = _c.sent();
-            return [4, window.fetch('https://drive.google.com/uc?export=download&id=16azNUz9ga4cP9ILEWVFsQmDMH-Ni1cD0')];
+            return [4, window.fetch('https://ruby-quail-portfolio-images.s3-ap-southeast-2.amazonaws.com/640x480.webm')];
 
           case 2:
             videoResp = _c.sent();
